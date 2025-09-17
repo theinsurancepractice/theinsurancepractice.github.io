@@ -1,0 +1,196 @@
+.navbar {
+  background-color: white;
+  height: 4rem;
+  padding: 0;
+}
+
+.navbar::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px; /* thickness of the border */
+  background: linear-gradient(to bottom, lightgray, transparent);
+}
+
+.navbar-left, .navbar-right {
+  display: flex;
+  width: 50%;
+}
+
+.navbar-right {
+  flex-direction: row-reverse;
+}
+
+.navbar-location {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: lightslategray;
+  width: 4rem;
+  height: 4rem;
+}
+
+.map-marker {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.navbar-consult {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background-color: maroon;
+  width: 8rem;
+  height: 4rem;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.chat-bubble {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-left: 0.5rem;
+}
+
+.offcanvas-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 4rem;
+  height: 4rem;
+}
+
+.offcanvas {
+  display: flex;
+  flex-direction: row;
+  color: white;
+  background-color: transparent;
+  border: none !important;
+  transform: translateX(-100%);
+}
+
+.offcanvas.show {
+  transform: translateX(0);
+}
+
+.offcanvas.short {
+  --bs-offcanvas-width: 50%;
+}
+
+.offcanvas.long {
+  --bs-offcanvas-width: 100%;
+}
+
+.offcanvas-transition-default {
+  transition-property: transform, visibility, width; /* keep Bootstrap + add width */
+  transition-duration: 2.3s, 0s, 2.3s;
+  transition-timing-function: ease-in-out, ease, ease-in-out;
+}
+
+.offcanvas-transition-fast {
+  transition-property: transform, visibility, width; /* keep Bootstrap + add width */
+  transition-duration: 2.3s, 0s, 1.2s;
+  transition-timing-function: ease-in-out, ease, ease-in-out;
+}
+
+.offcanvas-left {
+  display: flex;
+  flex-direction: column;
+  background-color: maroon;
+  flex-basis: calc(100% - 3rem);
+  height: 100%;
+}
+
+.offcanvas-right {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 3rem;
+}
+
+.offcanvas-right-margin-negative {
+  margin-left: -1px;
+}
+
+.offcanvas-right-margin-zero {
+  margin-left: 0;
+}
+
+.offcanvas-right-top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 3rem;
+  border-bottom-right-radius: 0.375rem;
+  background-color: maroon;
+}
+
+.offcanvas-right-bottom {
+  display: none;
+  flex: 1;
+}
+
+.offcanvas-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+  font-weight: bold;
+  padding: 1rem 15px;
+}
+
+.offcanvas-divider {
+  margin-left: 15px;
+  margin-right: 15px;
+  height: 1px;
+  background-color: rgba(224, 224, 224, 0.6);
+}
+
+.offcanvas-extension {
+  color: black;
+  background-color: transparent;
+  top: 0;
+  bottom: 0;
+  left: calc(50% - 3rem);
+  flex: 1;
+}
+
+.offcanvas-socials {
+  margin-top: auto;
+  padding-bottom: 30px;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: right;
+}
+
+.offcanvas-instagram {
+  margin-left: 0.7rem;
+}
+
+.rotate-270 {
+  transform: rotate(270deg);
+  transform-origin: center;
+}
+
+.offcanvas-extension-content {
+  position: absolute;
+  z-index: -2;
+  top: 0;
+  bottom: 0;
+  right: calc(3rem + 1px);
+  width: 50vw;
+  color: black;
+  background-color: white;
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.offcanvas-extension-content.open {
+  opacity: 1;
+  right: 3rem;
+  z-index: -1;
+}
