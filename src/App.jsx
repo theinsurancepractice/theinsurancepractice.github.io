@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Container from 'react-bootstrap/Container'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
@@ -17,22 +17,64 @@ import XSvg from './svg/XSvg.jsx'
 import './App.css'
 
 const App = () => {
-  const [showOffcanvas, setShowOffcanvas] = useState(false)
-  const [showOffcanvasExtension, setShowOffcanvasExtension] = useState(false)
-
-  const [offcanvasWidth, setOffcanvasWidth] = useState('short')
-  const [offcanvasExtension, setOffcanvasExtension] = useState('')
+  const [showOffcanvas, setShowOffcanvas] = useState(false)                   // Show or hide the offcanvas
+  const [closingOffcanvas, setClosingOffcanvas] = useState(false)             // Prevents user from clicking on the offcanvas when it is closing
+  const [offcanvasWidth, setOffcanvasWidth] = useState('short')               // Change the length of the offcanvas
+  const [showOffcanvasExtension, setShowOffcanvasExtension] = useState(false) // Remove or add the offcanvas-extension to the DOM
+  const [offcanvasExtension, setOffcanvasExtension] = useState('')            // Selects the extension to show
+  
+  // Remove visual artifacts between offcanvas-right and offcanvas-left when offcanvasWidth is short
   const [offcanvasRightMargin, setOffcanvasRightMargin] = useState('offcanvas-right-margin-negative')
+
+  // Modify the transition speed when switching between extensions
   const [offcanvasTransition, setOffcanvasTransition] = useState('offcanvas-transition-default')
 
-  const handleShowOffcanvas = () => setShowOffcanvas(true)
-  const handleCloseOffcanvas = () => setShowOffcanvas(false)
+  const [offcanvasZindex, setOffcanvasZindex] = useState('offcanvas-z-index-negative')
 
+  // useEffect(() => {
+  //   const offcanvas = document.querySelector('.offcanvas')
+  //   window.addEventListener('resize', handleCloseOffcanvas)
+  //   return () => {
+  //     window.removeEventListener('resize', handleCloseOffcanvas)
+  //   }
+  // }, [])
+
+  const handleShowOffcanvas = () => {
+    setClosingOffcanvas(false)
+    setOffcanvasZindex('offcanvas-z-index-positive')
+    setShowOffcanvas(true)
+  }
+  const handleCloseOffcanvas = () => {
+    const offcanvas = document.querySelector('.offcanvas')
+    offcanvas.addEventListener('transitionend', e => {
+      if (e.propertyName === 'left' && e.target.classList.contains('hide-offcanvas')) {
+        handleExitOffcanvas()
+      }
+    })
+    
+    setClosingOffcanvas(true)
+    setOffcanvasWidth('short')
+    setShowOffcanvas(false)
+
+    // Alternatively, set a timeout equal to the CSS transition duration
+    // setTimeout(() => {
+    //   handleExitOffcanvas()
+    // }, 300)
+  }
+  const handleExitOffcanvas = () => {
+    setShowOffcanvasExtension(false)
+    setOffcanvasExtension('')
+    setOffcanvasRightMargin('offcanvas-right-margin-negative')
+    resetOffcanvasLeftFlexBasis()
+    setClosingOffcanvas(false)
+    setOffcanvasZindex('offcanvas-z-index-negative')
+  }
 
   const setOffcanvasLeftFlexBasis = () => {
     const offcanvasLeft = document.querySelector('.offcanvas-left')
     const currentWidth = offcanvasLeft.getBoundingClientRect().width
     offcanvasLeft.style.flexBasis = currentWidth + 'px'
+    // offcanvasLeft.style.flexBasis = 'calc(50vw - 3rem)'
   }
 
   const resetOffcanvasLeftFlexBasis = () => {
@@ -72,14 +114,6 @@ const App = () => {
     }
   }
 
-  const handleExit = () => {
-    setShowOffcanvasExtension(false)
-    setOffcanvasWidth('short')
-    setOffcanvasExtension('')
-    setOffcanvasRightMargin('offcanvas-right-margin-negative')
-    resetOffcanvasLeftFlexBasis()
-  }
-
   return (
     <>
       <Navbar expand="lg" className="navbar">
@@ -93,14 +127,19 @@ const App = () => {
             <img src={mapMarker} alt="Map Marker" className="map-marker" />
           </div> */}
           <div className="navbar-consult">
-            Consult Us
+            <span>Consult Us</span>
             <img src={chatBubble} alt="chat Bubble" className="chat-bubble" />
           </div>
         </div>
       </Navbar>
 
-      <Offcanvas show={showOffcanvas} onHide={handleCloseOffcanvas} onExited={handleExit} className={`offcanvas ${offcanvasWidth} ${offcanvasTransition}`}>
-        <div className="offcanvas-left">
+      <Offcanvas 
+        show={true} 
+        backdrop={showOffcanvas} 
+        onHide={handleCloseOffcanvas} 
+        className={`${offcanvasWidth} ${offcanvasTransition} ${offcanvasZindex} ${showOffcanvas ? 'show-offcanvas' : 'hide-offcanvas'}`}
+      >
+        <div className={`offcanvas-left ${closingOffcanvas ? 'closing' : ''}`}>
           <div>
             <div className="offcanvas-link">
               <span>Home</span>
@@ -121,10 +160,10 @@ const App = () => {
             </div>
           </div>
           <div className="offcanvas-socials">
-            <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" className="offcanvas-icon">
               <FacebookSvg />
             </a>
-            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" className="offcanvas-instagram">
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" className="offcanvas-icon">
               <InstagramSvg />
             </a>
           </div>
