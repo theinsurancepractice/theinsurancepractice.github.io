@@ -85,11 +85,11 @@
 }
 
 .offcanvas.short {
-  --bs-offcanvas-width: 50%;
+  --bs-offcanvas-width: 13rem;
 }
 
 .offcanvas.long {
-  --bs-offcanvas-width: 100%;
+  --bs-offcanvas-width: 25rem;
 }
 
 .offcanvas-z-index-negative {
@@ -101,21 +101,21 @@
 }
 
 .offcanvas-transition-default {
-  transition-property: transform, visibility, width, left; /* keep Bootstrap + add width */
-  transition-duration: 2.3s, 0s, 2.3s, 2.3s, 2.3s;
-  transition-timing-function: ease-in-out, ease, ease-in-out, ease-in-out;
+  transition-property: width, left; /* keep Bootstrap + add width */
+  transition-duration: 2.3s, 2.3s;
+  transition-timing-function: ease-in-out, ease-in-out;
 }
 
 .offcanvas-transition-fast {
-  transition-property: transform, visibility, width, left; /* keep Bootstrap + add width */
-  transition-duration: 2.3s, 0s, 1.2s, 2.3s;
-  transition-timing-function: ease-in-out, ease, ease-in-out, ease-in-out;
+  transition-property: width, left; /* keep Bootstrap + add width */
+  transition-duration: 1.2s, 2.3s;
+  transition-timing-function: ease-in-out, ease-in-out;
 }
 
 .offcanvas-left {
   display: flex;
   flex-direction: column;
-  flex-basis: calc(100% - 3rem);
+  flex-basis: 10rem;
   overflow: scroll;
   background-color: maroon;
   height: 100%;
@@ -175,11 +175,9 @@
 
 .offcanvas-extension {
   color: black;
-  background-color: transparent;
-  top: 0;
-  bottom: 0;
-  left: calc(50% - 3rem);
+  background-color: white;
   flex: 1;
+  overflow: hidden;
 }
 
 .offcanvas-socials {
@@ -188,6 +186,7 @@
   padding-left: 20px;
   padding-right: 20px;
   text-align: right;
+  line-height: 2;
 }
 
 .offcanvas-icon {
@@ -199,21 +198,23 @@
   transform-origin: center;
 }
 
-.offcanvas-extension-content {
-  position: absolute;
-  z-index: -2;
-  top: 0;
-  bottom: 0;
-  right: calc(3rem + 1px);
-  width: 50vw;
-  color: black;
-  background-color: white;
-  opacity: 0;
-  overflow-wrap: anywhere;
+@media (max-width: 25rem) {
+  /* .offcanvas.short {
+    --bs-offcanvas-width: calc(100vw - 12rem);
+  } */
+  .offcanvas-left {
+    flex-basis: calc(100vw - 15rem);
+  }
+  /* .offcanvas-transition-default {
+    transition: none;
+  } */
 }
 
-.offcanvas-extension-content.open {
-  opacity: 1;
-  right: 3rem;
-  z-index: -1;
+@media (max-width: 345px) {
+  .offcanvas.short {
+    --bs-offcanvas-width: calc(345px - 12rem);
+  }
+  .offcanvas-left {
+    flex-basis: calc(345px - 15rem);
+  }
 }

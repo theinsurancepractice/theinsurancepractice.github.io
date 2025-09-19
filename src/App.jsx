@@ -20,7 +20,6 @@ const App = () => {
   const [showOffcanvas, setShowOffcanvas] = useState(false)                   // Show or hide the offcanvas
   const [closingOffcanvas, setClosingOffcanvas] = useState(false)             // Prevents user from clicking on the offcanvas when it is closing
   const [offcanvasWidth, setOffcanvasWidth] = useState('short')               // Change the length of the offcanvas
-  const [showOffcanvasExtension, setShowOffcanvasExtension] = useState(false) // Remove or add the offcanvas-extension to the DOM
   const [offcanvasExtension, setOffcanvasExtension] = useState('')            // Selects the extension to show
   
   // Remove visual artifacts between offcanvas-right and offcanvas-left when offcanvasWidth is short
@@ -32,7 +31,6 @@ const App = () => {
   const [offcanvasZindex, setOffcanvasZindex] = useState('offcanvas-z-index-negative')
 
   // useEffect(() => {
-  //   const offcanvas = document.querySelector('.offcanvas')
   //   window.addEventListener('resize', handleCloseOffcanvas)
   //   return () => {
   //     window.removeEventListener('resize', handleCloseOffcanvas)
@@ -40,6 +38,7 @@ const App = () => {
   // }, [])
 
   const handleShowOffcanvas = () => {
+    setOffcanvasWidth('short')
     setClosingOffcanvas(false)
     setOffcanvasZindex('offcanvas-z-index-positive')
     setShowOffcanvas(true)
@@ -62,24 +61,10 @@ const App = () => {
     // }, 300)
   }
   const handleExitOffcanvas = () => {
-    setShowOffcanvasExtension(false)
     setOffcanvasExtension('')
     setOffcanvasRightMargin('offcanvas-right-margin-negative')
-    resetOffcanvasLeftFlexBasis()
     setClosingOffcanvas(false)
     setOffcanvasZindex('offcanvas-z-index-negative')
-  }
-
-  const setOffcanvasLeftFlexBasis = () => {
-    const offcanvasLeft = document.querySelector('.offcanvas-left')
-    const currentWidth = offcanvasLeft.getBoundingClientRect().width
-    offcanvasLeft.style.flexBasis = currentWidth + 'px'
-    // offcanvasLeft.style.flexBasis = 'calc(50vw - 3rem)'
-  }
-
-  const resetOffcanvasLeftFlexBasis = () => {
-    const offcanvasLeft = document.querySelector('.offcanvas-left')
-    offcanvasLeft.style.flexBasis = 'calc(100% - 3rem)'
   }
 
   const addOffcanvasEventListener = type => {
@@ -95,12 +80,10 @@ const App = () => {
   }
   
   const handleShowExtension = type => {
-    setOffcanvasLeftFlexBasis()
     setOffcanvasRightMargin('offcanvas-right-margin-zero')
-    setShowOffcanvasExtension(true)
     
     // Switch extension
-    if (offcanvasExtension !== '' && offcanvasExtension !== type) { 
+    if (offcanvasExtension !== '' && offcanvasExtension !== type && offcanvasWidth === 'long') { 
       addOffcanvasEventListener(type)
       setOffcanvasTransition('offcanvas-transition-fast')
       setOffcanvasWidth('short')
@@ -168,9 +151,14 @@ const App = () => {
             </a>
           </div>
         </div>
-        {showOffcanvasExtension && <div className="offcanvas-extension"></div>}
-        <div className={`offcanvas-extension-content ${offcanvasExtension === 'team' ? 'open' : ''}`}>teamteamteamteamteam</div>
-        <div className={`offcanvas-extension-content ${offcanvasExtension === 'services' ? 'open' : ''}`}>services</div>
+        {offcanvasExtension !== "" && 
+          <div className="offcanvas-extension">
+            {offcanvasExtension === "team" 
+            ? <div>teamteamteamteamteam</div>
+            : <div>services</div>
+            }
+          </div>
+        }
         <div className={`offcanvas-right ${offcanvasRightMargin}`} onClick={handleCloseOffcanvas}>
           <div className="offcanvas-right-top">
             <XSvg />
