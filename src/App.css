@@ -64,11 +64,12 @@
 
 /* Boostrap default class name */
 .offcanvas {
-  display: flex;
+  display: inline-flex;
   flex-direction: row;
   color: white;
   background-color: transparent;
   border: none !important;
+  --bs-offcanvas-width: auto;
 }
 
 /* Override Boostrap class */
@@ -77,48 +78,24 @@
 }
 
 .offcanvas.hide-offcanvas {
-  left: calc(-1 * var(--bs-offcanvas-width));
+  left: -13rem;
 }
 
 .offcanvas.show-offcanvas {
   left: 0;
 }
 
-.offcanvas.short {
-  --bs-offcanvas-width: 13rem;
-}
-
-.offcanvas.long {
-  --bs-offcanvas-width: 25rem;
-}
-
-.offcanvas-z-index-negative {
-  --bs-offcanvas-zindex: -1;
-}
-
-.offcanvas-z-index-positive {
-  --bs-offcanvas-zindex: 10000;
-}
-
-.offcanvas-transition-default {
-  transition-property: width, left; /* keep Bootstrap + add width */
-  transition-duration: 2.3s, 2.3s;
-  transition-timing-function: ease-in-out, ease-in-out;
-}
-
-.offcanvas-transition-fast {
-  transition-property: width, left; /* keep Bootstrap + add width */
-  transition-duration: 1.2s, 2.3s;
-  transition-timing-function: ease-in-out, ease-in-out;
+.offcanvas.transition {
+  transition: left 2.3s ease-in-out;
 }
 
 .offcanvas-left {
   display: flex;
   flex-direction: column;
-  flex-basis: 10rem;
   overflow: scroll;
   background-color: maroon;
-  height: 100%;
+  height: 100vh;
+  width: 10rem;
 }
 
 .offcanvas-left.closing {
@@ -128,15 +105,11 @@
 .offcanvas-right {
   display: flex;
   flex-direction: column;
-  flex-basis: 3rem;
+  width: 3rem;
 }
 
-.offcanvas-right-margin-negative {
+.offcanvas-right.margin-negative {
   margin-left: -1px;
-}
-
-.offcanvas-right-margin-zero {
-  margin-left: 0;
 }
 
 .offcanvas-right-top {
@@ -176,8 +149,18 @@
 .offcanvas-extension {
   color: black;
   background-color: white;
-  flex: 1;
+  width: 0;
+  height: 100vh;
   overflow: hidden;
+  transition: width 2.3s ease-in-out;
+}
+
+.offcanvas-extension.open {
+  width: 12rem;
+}
+
+.offcanvas-extension.fast {
+  transition: width 1.2s ease-in-out;
 }
 
 .offcanvas-socials {
@@ -199,22 +182,23 @@
 }
 
 @media (max-width: 25rem) {
-  /* .offcanvas.short {
-    --bs-offcanvas-width: calc(100vw - 12rem);
-  } */
-  .offcanvas-left {
-    flex-basis: calc(100vw - 15rem);
+  .offcanvas.hide-offcanvas {
+    left: calc(12rem - 100vw);
   }
-  /* .offcanvas-transition-default {
-    transition: none;
-  } */
+  .offcanvas-left {
+    width: calc(100vw - 15rem);
+  }
 }
 
 @media (max-width: 345px) {
-  .offcanvas.short {
-    --bs-offcanvas-width: calc(345px - 12rem);
+  .offcanvas.hide-offcanvas {
+    left: calc(12rem - 345px);
   }
   .offcanvas-left {
-    flex-basis: calc(345px - 15rem);
+    width: calc(345px - 15rem);
+    flex-shrink: 0;
+  }
+  .offcanvas-right {
+    flex-shrink: 0;
   }
 }

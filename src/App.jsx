@@ -17,18 +17,18 @@ import XSvg from './svg/XSvg.jsx'
 import './App.css'
 
 const App = () => {
-  const [showOffcanvas, setShowOffcanvas] = useState(false)                   // Show or hide the offcanvas
-  const [closingOffcanvas, setClosingOffcanvas] = useState(false)             // Prevents user from clicking on the offcanvas when it is closing
-  const [offcanvasWidth, setOffcanvasWidth] = useState('short')               // Change the length of the offcanvas
-  const [offcanvasExtension, setOffcanvasExtension] = useState('')            // Selects the extension to show
+  const [showOffcanvas, setShowOffcanvas] = useState(false)                    // Show or hide offcanvas
+  const [closingOffcanvas, setClosingOffcanvas] = useState(false)              // Prevents user from clicking on the offcanvas when it is closing
+  const [offcanvasTransition, setOffcanvasTransition] = useState(false)        // Turn off transition when offcanvas is hidden
   
-  // Remove visual artifacts between offcanvas-right and offcanvas-left when offcanvasWidth is short
-  const [offcanvasRightMargin, setOffcanvasRightMargin] = useState('offcanvas-right-margin-negative')
+  const [showOffcanvasExtension, setShowOffcanvasExtension] = useState(false)  // Show or hide offcanvas-extension
+  const [offcanvasExtension, setOffcanvasExtension] = useState('team')         // Selects the extension to show
+  
+  // Remove visual artifacts between offcanvas-right and offcanvas-left when offcanvas-extension is hidden
+  const [offcanvasRightMarginNegative, setOffcanvasRightMarginNegative] = useState(true)
 
   // Modify the transition speed when switching between extensions
-  const [offcanvasTransition, setOffcanvasTransition] = useState('offcanvas-transition-default')
-
-  const [offcanvasZindex, setOffcanvasZindex] = useState('offcanvas-z-index-negative')
+  const [offcanvasExtensionTransitionFast, setOffcanvasExtensionTransitionFast] = useState(false)
 
   // useEffect(() => {
   //   window.addEventListener('resize', handleCloseOffcanvas)
@@ -38,9 +38,9 @@ const App = () => {
   // }, [])
 
   const handleShowOffcanvas = () => {
-    setOffcanvasWidth('short')
+    setOffcanvasTransition(true)
+    setShowOffcanvasExtension(false)
     setClosingOffcanvas(false)
-    setOffcanvasZindex('offcanvas-z-index-positive')
     setShowOffcanvas(true)
   }
   const handleCloseOffcanvas = () => {
@@ -51,49 +51,49 @@ const App = () => {
       }
     })
     
+    setOffcanvasExtensionTransitionFast(false)
     setClosingOffcanvas(true)
-    setOffcanvasWidth('short')
+    setShowOffcanvasExtension(false)
     setShowOffcanvas(false)
 
     // Alternatively, set a timeout equal to the CSS transition duration
     // setTimeout(() => {
     //   handleExitOffcanvas()
-    // }, 300)
+    // }, 150)
   }
   const handleExitOffcanvas = () => {
-    setOffcanvasExtension('')
-    setOffcanvasRightMargin('offcanvas-right-margin-negative')
+    setOffcanvasTransition(false)
+    setOffcanvasRightMarginNegative(true)
     setClosingOffcanvas(false)
-    setOffcanvasZindex('offcanvas-z-index-negative')
   }
 
-  const addOffcanvasEventListener = type => {
-    const offcanvas = document.querySelector('.offcanvas')
-    const handleOffcanvasTransitionend = e => {
-      offcanvas.removeEventListener('transitionend', handleOffcanvasTransitionend)
-      if (e.propertyName === 'width' && e.target.classList.contains('short')) {
+  const addOffcanvasExtensionEventListener = type => {
+    const offcanvasExtension = document.querySelector('.offcanvas-extension')
+    const handleOffcanvasExtensionTransitionend = e => {
+      offcanvasExtension.removeEventListener('transitionend', handleOffcanvasExtensionTransitionend)
+      if (e.propertyName === 'width' && !e.target.classList.contains('open')) {
         setOffcanvasExtension(type)
-        setOffcanvasWidth('long')
+        setShowOffcanvasExtension(true)
       }
     }
-    offcanvas.addEventListener('transitionend', handleOffcanvasTransitionend)
+    offcanvasExtension.addEventListener('transitionend', handleOffcanvasExtensionTransitionend)
   }
   
   const handleShowExtension = type => {
-    setOffcanvasRightMargin('offcanvas-right-margin-zero')
+    setOffcanvasRightMarginNegative(false)
     
     // Switch extension
-    if (offcanvasExtension !== '' && offcanvasExtension !== type && offcanvasWidth === 'long') { 
-      addOffcanvasEventListener(type)
-      setOffcanvasTransition('offcanvas-transition-fast')
-      setOffcanvasWidth('short')
+    if (offcanvasExtension !== type && showOffcanvasExtension) { 
+      addOffcanvasExtensionEventListener(type)
+      setOffcanvasExtensionTransitionFast(true)
+      setShowOffcanvasExtension(false)
     }
 
     // No extension currently open
     else {
-      setOffcanvasTransition('offcanvas-transition-default')
+      setOffcanvasExtensionTransitionFast(false)
       setOffcanvasExtension(type)
-      setOffcanvasWidth('long')
+      setShowOffcanvasExtension(true)
     }
   }
 
@@ -120,7 +120,7 @@ const App = () => {
         show={true} 
         backdrop={showOffcanvas} 
         onHide={handleCloseOffcanvas} 
-        className={`${offcanvasWidth} ${offcanvasTransition} ${offcanvasZindex} ${showOffcanvas ? 'show-offcanvas' : 'hide-offcanvas'}`}
+        className={`${showOffcanvas ? 'show-offcanvas' : 'hide-offcanvas'} ${offcanvasTransition ? 'transition' : ''}`}
       >
         <div className={`offcanvas-left ${closingOffcanvas ? 'closing' : ''}`}>
           <div>
@@ -151,15 +151,13 @@ const App = () => {
             </a>
           </div>
         </div>
-        {offcanvasExtension !== "" && 
-          <div className="offcanvas-extension">
-            {offcanvasExtension === "team" 
-            ? <div>teamteamteamteamteam</div>
-            : <div>services</div>
-            }
-          </div>
-        }
-        <div className={`offcanvas-right ${offcanvasRightMargin}`} onClick={handleCloseOffcanvas}>
+        <div className={`offcanvas-extension ${showOffcanvasExtension ? 'open' : ''} ${offcanvasExtensionTransitionFast ? 'fast' : ''}`}>
+          {offcanvasExtension === "team" 
+          ? <div>teamteamteamteamteam</div>
+          : <div>services</div>
+          }
+        </div>
+        <div className={`offcanvas-right ${offcanvasRightMarginNegative ? 'margin-negative' : ''}`} onClick={handleCloseOffcanvas}>
           <div className="offcanvas-right-top">
             <XSvg />
           </div>
