@@ -69,30 +69,21 @@
   color: white;
   background-color: transparent;
   border: none !important;
+  transition: transform 2.3s ease-in-out;
   --bs-offcanvas-width: auto;
 }
 
-/* Override Boostrap class */
-.offcanvas.offcanvas-start {
-  left: auto;
-}
-
 .offcanvas.hide-offcanvas {
-  left: -13rem;
+  transform: translateX(-100%) !important;
 }
 
 .offcanvas.show-offcanvas {
-  left: 0;
-}
-
-.offcanvas.transition {
-  transition: left 2.3s ease-in-out;
+  transform: translateX(0);
 }
 
 .offcanvas-left {
   display: flex;
   flex-direction: column;
-  overflow: scroll;
   background-color: maroon;
   height: 100vh;
   width: 10rem;
@@ -182,23 +173,26 @@
 }
 
 @media (max-width: 25rem) {
-  .offcanvas.hide-offcanvas {
-    left: calc(12rem - 100vw);
-  }
   .offcanvas-left {
     width: calc(100vw - 15rem);
   }
 }
 
 @media (max-width: 345px) {
-  .offcanvas.hide-offcanvas {
-    left: calc(12rem - 345px);
-  }
   .offcanvas-left {
     width: calc(345px - 15rem);
     flex-shrink: 0;
   }
   .offcanvas-right {
     flex-shrink: 0;
+  }
+}
+
+@media (max-width: calc(345px - 12rem)) {
+  .offcanvas {
+    min-width: calc(345px - 12rem);
+  }
+  .offcanvas-extension {
+    display: none;
   }
 }

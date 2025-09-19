@@ -19,7 +19,6 @@ import './App.css'
 const App = () => {
   const [showOffcanvas, setShowOffcanvas] = useState(false)                    // Show or hide offcanvas
   const [closingOffcanvas, setClosingOffcanvas] = useState(false)              // Prevents user from clicking on the offcanvas when it is closing
-  const [offcanvasTransition, setOffcanvasTransition] = useState(false)        // Turn off transition when offcanvas is hidden
   
   const [showOffcanvasExtension, setShowOffcanvasExtension] = useState(false)  // Show or hide offcanvas-extension
   const [offcanvasExtension, setOffcanvasExtension] = useState('team')         // Selects the extension to show
@@ -38,18 +37,29 @@ const App = () => {
   // }, [])
 
   const handleShowOffcanvas = () => {
-    setOffcanvasTransition(true)
     setShowOffcanvasExtension(false)
     setClosingOffcanvas(false)
     setShowOffcanvas(true)
   }
+
   const handleCloseOffcanvas = () => {
     const offcanvas = document.querySelector('.offcanvas')
-    offcanvas.addEventListener('transitionend', e => {
-      if (e.propertyName === 'left' && e.target.classList.contains('hide-offcanvas')) {
-        handleExitOffcanvas()
+    const handleExitOffcanvas = e => {
+      offcanvas.removeEventListener('transitionend', handleExitOffcanvas)
+      if (e.propertyName === 'transform' && e.target.classList.contains('hide-offcanvas')) {
+        setClosingOffcanvas(false)
       }
-    })
+    }
+    offcanvas.addEventListener('transitionend', handleExitOffcanvas)
+
+    const offcanvasExtension = document.querySelector('.offcanvas-extension')
+    const handleExitOffcanvasExtension = e => {
+      offcanvasExtension.removeEventListener('transitionend', handleExitOffcanvasExtension)
+      if (e.propertyName === 'width' && !e.target.classList.contains('open')) {
+        setOffcanvasRightMarginNegative(true)
+      }
+    }
+    offcanvasExtension.addEventListener('transitionend', handleExitOffcanvasExtension)
     
     setOffcanvasExtensionTransitionFast(false)
     setClosingOffcanvas(true)
@@ -60,11 +70,6 @@ const App = () => {
     // setTimeout(() => {
     //   handleExitOffcanvas()
     // }, 150)
-  }
-  const handleExitOffcanvas = () => {
-    setOffcanvasTransition(false)
-    setOffcanvasRightMarginNegative(true)
-    setClosingOffcanvas(false)
   }
 
   const addOffcanvasExtensionEventListener = type => {
@@ -120,7 +125,7 @@ const App = () => {
         show={true} 
         backdrop={showOffcanvas} 
         onHide={handleCloseOffcanvas} 
-        className={`${showOffcanvas ? 'show-offcanvas' : 'hide-offcanvas'} ${offcanvasTransition ? 'transition' : ''}`}
+        className={`${showOffcanvas ? 'show-offcanvas' : 'hide-offcanvas'}`}
       >
         <div className={`offcanvas-left ${closingOffcanvas ? 'closing' : ''}`}>
           <div>
