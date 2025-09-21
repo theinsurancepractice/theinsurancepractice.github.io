@@ -1,5 +1,5 @@
-const FacebookSvg = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="1.4rem" height="1.4rem" fill="white" viewBox="0 0 31 29">
+const FacebookSvg = ({ width, height, color }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={width} height={height} fill={color} viewBox="0 0 31 29">
     <path d="
       M30.0274 14.5882
       C30.0264 6.56596 23.5232 0.0627441 15.5 0.0627441

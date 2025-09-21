@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Routes, Route, NavLink } from "react-router"
 import Container from 'react-bootstrap/Container'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
@@ -14,7 +15,13 @@ import FacebookSvg from './svg/FacebookSvg.jsx'
 import InstagramSvg from './svg/InstagramSvg.jsx'
 import TriangleSvg from './svg/TriangleSvg.jsx'
 import XSvg from './svg/XSvg.jsx'
+import Home from './Home.jsx'
+import Contact from './Contact.jsx'
 import './App.css'
+
+const FACEBOOK_URL = "https://www.facebook.com/"
+const INSTAGRAM_URL = "https://www.instagram.com/"
+const MIN_DESKTOP_WIDTH = 1024
 
 const App = () => {
   const [showOffcanvas, setShowOffcanvas] = useState(false)                    // Show or hide offcanvas
@@ -29,12 +36,27 @@ const App = () => {
   // Modify the transition speed when switching between extensions
   const [offcanvasExtensionTransitionFast, setOffcanvasExtensionTransitionFast] = useState(false)
 
+  const [showOffcanvas2, setShowOffcanvas2] = useState(false)
+  const [closingOffcanvas2, setClosingOffcanvas2] = useState(false)
+
   // useEffect(() => {
   //   window.addEventListener('resize', handleCloseOffcanvas)
   //   return () => {
   //     window.removeEventListener('resize', handleCloseOffcanvas)
   //   }
   // }, [])
+
+  // Close offcanvas if window is resized to desktop size
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= MIN_DESKTOP_WIDTH) {
+        handleCloseOffcanvas()
+        handleCloseOffcanvas2()
+      }
+    }
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
 
   const handleShowOffcanvas = () => {
     setShowOffcanvasExtension(false)
@@ -102,6 +124,27 @@ const App = () => {
     }
   }
 
+  const handleShowOffcanvas2 = () => {
+    if (window.innerWidth < MIN_DESKTOP_WIDTH) {
+      setClosingOffcanvas2(false)
+      setShowOffcanvas2(true)
+    }
+  }
+
+  const handleCloseOffcanvas2 = () => {
+    const offcanvas2 = document.querySelector('.offcanvas2')
+    const handleExitOffcanvas2 = e => {
+      offcanvas2.removeEventListener('transitionend', handleExitOffcanvas2)
+      if (e.propertyName === 'transform' && e.target.classList.contains('hide-offcanvas')) {
+        setClosingOffcanvas2(false)
+      }
+    }
+    offcanvas2.addEventListener('transitionend', handleExitOffcanvas2)
+    
+    setClosingOffcanvas2(true)
+    setShowOffcanvas2(false)
+  }
+
   return (
     <>
       <Navbar expand="lg" className="navbar">
@@ -109,14 +152,29 @@ const App = () => {
           <div className="offcanvas-button" onClick={handleShowOffcanvas}>
             <HamburgerSvg />
           </div>
+          <NavLink to="/" end className="navbar-link">
+            <span>Home</span>
+          </NavLink>
+          <div className="navbar-link">
+            <span>Meet Our Team</span>
+            <TriangleSvg angle={0} color={"maroon"} />
+          </div>
+          <div className="navbar-link">
+            <span>Services</span>
+            <TriangleSvg angle={0} color={"maroon"} />
+          </div>
+          <NavLink to="/contact-us" end className="navbar-link">
+            <span>Contact Us</span>
+          </NavLink>
         </div>
         <div className="navbar-right">
           {/* <div className="navbar-location">
             <img src={mapMarker} alt="Map Marker" className="map-marker" />
           </div> */}
-          <div className="navbar-consult">
+          <div className="navbar-consult" onClick={handleShowOffcanvas2}>
+            <TriangleSvg angle={0} color={"white"} />
             <span>Consult Us</span>
-            <img src={chatBubble} alt="chat Bubble" className="chat-bubble" />
+            <img src={chatBubble} alt="Chat Bubble" className="chat-bubble" />
           </div>
         </div>
       </Navbar>
@@ -135,12 +193,12 @@ const App = () => {
             <div className="offcanvas-divider"></div>
             <div onClick={() => handleShowExtension('team')} className="offcanvas-link">
               <span>Meet Our Team</span>
-              <TriangleSvg />
+              <TriangleSvg angle={270} color={"white"} />
             </div>
             <div className="offcanvas-divider"></div>
             <div onClick={() => handleShowExtension('services')} className="offcanvas-link">
               <span>Services</span>
-              <TriangleSvg />
+              <TriangleSvg angle={270} color={"white"} />
             </div>
             <div className="offcanvas-divider"></div>
             <div className="offcanvas-link">
@@ -148,11 +206,11 @@ const App = () => {
             </div>
           </div>
           <div className="offcanvas-socials">
-            <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" className="offcanvas-icon">
-              <FacebookSvg />
+            <a href={FACEBOOK_URL} target="_blank" rel="noopener noreferrer" className="offcanvas-icon">
+              <FacebookSvg width="1.4rem" height="1.4rem" color="white" />
             </a>
-            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" className="offcanvas-icon">
-              <InstagramSvg />
+            <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="offcanvas-icon">
+              <InstagramSvg width="1.4rem" height="1.4rem" color="white" />
             </a>
           </div>
         </div>
@@ -170,8 +228,39 @@ const App = () => {
         </div>
       </Offcanvas>
 
-      <div>Your Insurance needs?</div>
-      <div>We've got you covered</div>
+      <Offcanvas
+        show={true}
+        bsPrefix="offcanvas2"
+        placement="end"
+        backdrop={showOffcanvas2} 
+        onHide={handleCloseOffcanvas2} 
+        className={`${showOffcanvas2 ? 'show-offcanvas' : 'hide-offcanvas'}`}
+      >
+        <div onClick={handleCloseOffcanvas2} className="offcanvas2-left">
+          <div className="offcanvas2-left-top">
+            <XSvg />
+          </div>
+          <div className="offcanvas2-left-bottom"></div>
+        </div>
+        <div className={`offcanvas2-right ${closingOffcanvas2 ? 'closing' : ''}`}>
+          <div className="offcanvas2-consult">Consult Us</div>
+          <div className="offcanvas2-socials">
+            <span>Connect with us on:</span>
+            <a href={FACEBOOK_URL} target="_blank" rel="noopener noreferrer">
+              <FacebookSvg width="2rem" height="2rem" color="maroon" />
+            </a>
+            <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer">
+              <InstagramSvg width="2rem" height="2rem" color="maroon" />
+            </a>
+          </div>
+        </div>
+      </Offcanvas>
+      
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/contact-us" element={<Contact />} />
+        <Route path="*" element={<Home />} />
+      </Routes>
     </>
   )
 }
