@@ -1,5 +1,12 @@
 const TriangleSvg = ({ angle, color }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" fill={color} width="0.8rem" height="0.8rem" viewBox="0 0 13 7" className={`rotate-${angle}`}>
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    fill={color} 
+    width="0.8rem" 
+    height="0.8rem" 
+    viewBox="0 0 13 7" 
+    style={{ transform: `rotate(${angle}deg)`, transformOrigin: 'center' }}
+  >
     <path 
       d="
         M5.82415 6.38027
