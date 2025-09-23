@@ -101,7 +101,7 @@
   color: white;
   background-color: transparent;
   border: none !important;
-  transition: transform 2.3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
   --bs-offcanvas-width: auto;
 }
 
@@ -118,12 +118,8 @@
   flex-direction: column;
   background-color: #238dc1;
   height: 100vh;
-  width: 10rem;
+  width: 14rem;
   font-size: 0.9rem;
-}
-
-.offcanvas-left.closing {
-  pointer-events: none;
 }
 
 .offcanvas-right {
@@ -159,12 +155,79 @@
   color: white;
   text-decoration: none;
   font-weight: bold;
-  padding: 1rem;
+  padding: 1rem 1rem 0.25rem;
+}
+
+.offcanvas-link.show {
+  padding-bottom: 0.25rem;
+}
+
+.offcanvas-link-bottom {
+  display: block;
+  height: 0.75rem;
 }
 
 .offcanvas-link:hover,
-.offcanvas-link:focus {
+.offcanvas-link:focus,
+.offcanvas-link-bottom:hover,
+.offcanvas-link-bottom:focus {
   cursor: pointer;
+}
+
+.offcanvas-link-bottom.show:hover,
+.offcanvas-link-bottom.show:focus {
+  cursor: auto;
+}
+
+.offcanvas-sublinks {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding-left: 2rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  overflow: hidden;
+  max-height: 0;
+}
+
+.offcanvas-sublinks.transition {
+  transition: max-height 0.3s ease-in-out;
+}
+
+.offcanvas-sublink {
+  position: relative;
+  padding: 0.25rem 1rem;
+  color: white;
+  text-decoration: none;
+}
+
+.offcanvas-sublink::before {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 50%;
+  left: 0;
+  width: 0.5rem;
+  border-bottom: 1px solid rgba(224, 224, 224, 0.6);
+}
+
+.offcanvas-sublink::after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: -0.25rem;
+  left: 0;
+  height: calc(100% + 0.5rem);
+  border-left: 1px solid rgba(224, 224, 224, 0.6);
+}
+
+.offcanvas-sublink:first-child::after {
+  height: calc(100% + 0.25rem);
+}
+
+.offcanvas-sublink:last-child::after {
+  bottom: 50%;
+  height: calc(50% + 0.25rem);
 }
 
 .offcanvas-divider {
@@ -190,17 +253,17 @@
 /* 640px */
 @media (min-width: 40rem) {
   .offcanvas-left {
-    width: calc(12rem + 0.5 * (100vw - 40rem));
+    width: calc(14rem + 0.25 * (100vw - 40rem));
+    font-size: 1rem;
+  }
+  .navbar-consult {
+    width: 9rem;
     font-size: 1rem;
   }
 }
 
 /* 768px */
 @media (min-width: 48rem) {
-  .navbar-consult {
-    width: 9rem;
-    font-size: 1rem;
-  }
   .offcanvas-left {
     width: 16rem;
   }

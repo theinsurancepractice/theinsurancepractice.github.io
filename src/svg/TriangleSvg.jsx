@@ -5,7 +5,7 @@ const TriangleSvg = ({ angle, color }) => (
     width="0.8rem" 
     height="0.8rem" 
     viewBox="0 0 13 7" 
-    style={{ transform: `rotate(${angle}deg)`, transformOrigin: 'center' }}
+    style={{ transform: `rotate(${angle}deg)`, transformOrigin: 'center', transition: 'transform 0.3s ease-in-out' }}
   >
     <path 
       d="

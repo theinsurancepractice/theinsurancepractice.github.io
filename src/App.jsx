@@ -18,9 +18,13 @@ import XSvg from './svg/XSvg.jsx'
 import About from './About.jsx'
 import Activities from './Activities.jsx'
 import Careers from './Careers.jsx'
+import CompanyInsurance from './CompanyInsurance.jsx'
 import Contact from './Contact.jsx'
+import ExistingBusinesses from './ExistingBusinesses.jsx'
 import Home from './Home.jsx'
+import NewStartups from './NewStartups.jsx'
 import Partners from './Partners.jsx'
+import PersonalInsurance from './PersonalInsurance.jsx'
 import Team from './Team.jsx'
 import './App.css'
 
@@ -29,33 +33,78 @@ const INSTAGRAM_URL = "https://www.instagram.com/"
 const MIN_DESKTOP_WIDTH = 1024
 
 const App = () => {
-  const [showOffcanvas, setShowOffcanvas] = useState(false)                    // Show or hide offcanvas
-
-  // useEffect(() => {
-  //   window.addEventListener('resize', handleCloseOffcanvas)
-  //   return () => {
-  //     window.removeEventListener('resize', handleCloseOffcanvas)
-  //   }
-  // }, [])
+  const [showOffcanvas, setShowOffcanvas] = useState(false)                              // Show or hide offcanvas
+  const [showOffcanvasProducts, setShowOffcanvasProducts] = useState(false)              // Show or hide offcanvas products
+  const [offcanvasProductsTransition, setOffcanvasProductsTransition] = useState(false)  // Turn on or off transition for offcanvas products
+  const [showOffcanvasServices, setShowOffcanvasServices] = useState(false)              // Show or hide offcanvas services
+  const [offcanvasServicesTransition, setOffcanvasServicesTransition] = useState(false)  // Turn on or off transition for offcanvas services
 
   // Close offcanvas if window is resized to desktop size
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= MIN_DESKTOP_WIDTH) {
         handleCloseOffcanvas()
-        // handleCloseOffcanvas2()
       }
     }
     window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)
   }, [])
 
-  const handleShowOffcanvas = () => {
-    setShowOffcanvas(true)
-  }
+  useEffect(() => {
+    const handleResizeOffcanvasProducts = () => {
+      const offcanvasSublinks = document.querySelector('.offcanvas-sublinks.products')
+      if (showOffcanvasProducts) {
+        offcanvasSublinks.style.maxHeight = offcanvasSublinks.scrollHeight + 'px'
+      }
+    }
+    window.addEventListener('resize', handleResizeOffcanvasProducts)
+    return () => window.removeEventListener('resize', handleResizeOffcanvasProducts)
+  }, [showOffcanvasProducts])
 
-  const handleCloseOffcanvas = () => {
-    setShowOffcanvas(false)
+  useEffect(() => {
+    const handleResizeOffcanvasServices = () => {
+      const offcanvasSublinks = document.querySelector('.offcanvas-sublinks.services')
+      if (showOffcanvasServices) {
+        offcanvasSublinks.style.maxHeight = offcanvasSublinks.scrollHeight + 'px'
+      }
+    }
+    window.addEventListener('resize', handleResizeOffcanvasServices)
+    return () => window.removeEventListener('resize', handleResizeOffcanvasServices)
+  }, [showOffcanvasServices])
+
+  const handleShowOffcanvas = () => setShowOffcanvas(true)
+  const handleCloseOffcanvas = () => setShowOffcanvas(false)
+
+  const handleToggleOffcanvasProducts = () => {
+    const offcanvasSublinks = document.querySelector('.offcanvas-sublinks.products')
+    const handleTransitionEnd = () => {
+      offcanvasSublinks.removeEventListener('transitionend', handleTransitionEnd)
+      setOffcanvasProductsTransition(false)
+    }
+    offcanvasSublinks.addEventListener('transitionend', handleTransitionEnd)
+    if (showOffcanvasProducts) {
+      offcanvasSublinks.style.maxHeight = '0px'
+    } else {
+      offcanvasSublinks.style.maxHeight = offcanvasSublinks.scrollHeight + 'px'
+    }
+    setOffcanvasProductsTransition(true)
+    setShowOffcanvasProducts(!showOffcanvasProducts)
+  }
+  
+  const handleToggleOffcanvasServices = () => {
+    const offcanvasSublinks = document.querySelector('.offcanvas-sublinks.services')
+    const handleTransitionEnd = () => {
+      offcanvasSublinks.removeEventListener('transitionend', handleTransitionEnd)
+      setOffcanvasServicesTransition(false)
+    }
+    offcanvasSublinks.addEventListener('transitionend', handleTransitionEnd)
+    if (showOffcanvasServices) {
+      offcanvasSublinks.style.maxHeight = '0px'
+    } else {
+      offcanvasSublinks.style.maxHeight = offcanvasSublinks.scrollHeight + 'px'
+    }
+    setOffcanvasServicesTransition(true)
+    setShowOffcanvasServices(!showOffcanvasServices)
   }
 
   return (
@@ -66,30 +115,30 @@ const App = () => {
             <HamburgerSvg />
           </div>
           <NavLink to="/" end className="navbar-link">
-            <span>Home</span>
+            Home
           </NavLink>
           <NavLink to="/about-us" end className="navbar-link">
-            <span>About Us</span>
+            About Us
           </NavLink>
           <div className="navbar-link">
-            <span>Products</span>
+            Products
             <TriangleSvg angle={0} color={"#238dc1"} />
           </div>
           <NavLink to="/our-team" end className="navbar-link">
-            <span>Our Team</span>
+            Our Team
           </NavLink>
           <div className="navbar-link">
-            <span>Services</span>
+            Services
             <TriangleSvg angle={0} color={"#238dc1"} />
           </div>
           <NavLink to="/our-partners" end className="navbar-link">
-            <span>Our Partners</span>
+            Our Partners
           </NavLink>
           <NavLink to="/careers" end className="navbar-link">
-            <span>Careers</span>
+            Careers
           </NavLink>
           <NavLink to="/activities" end className="navbar-link">
-            <span>Activities</span>
+            Activities
           </NavLink>
         </div>
         <div className="navbar-right">
@@ -97,7 +146,7 @@ const App = () => {
             <img src={mapMarker} alt="Map Marker" className="map-marker" />
           </div> */}
           <NavLink to="/contact-us" end className="navbar-consult">
-            <span>Contact Us</span>
+            Contact Us
             <img src={chatBubble} alt="Chat Bubble" className="chat-bubble" />
           </NavLink>
         </div>
@@ -112,38 +161,62 @@ const App = () => {
         <div className="offcanvas-left">
           <div>
             <NavLink to="/" end onClick={handleCloseOffcanvas} className="offcanvas-link">
-              <span>Home</span>
+              Home
             </NavLink>
+            <NavLink to="/" end onClick={handleCloseOffcanvas} className="offcanvas-link-bottom"></NavLink>
             <div className="offcanvas-divider"></div>
             <NavLink to="/about-us" end onClick={handleCloseOffcanvas} className="offcanvas-link">
-              <span>About Us</span>
+              About Us
             </NavLink>
+            <NavLink to="/about-us" end onClick={handleCloseOffcanvas} className="offcanvas-link-bottom"></NavLink>
             <div className="offcanvas-divider"></div>
-            <div onClick={() => {}} className="offcanvas-link">
-              <span>Products</span>
-              <TriangleSvg angle={0} color={"white"} />
+            <div onClick={handleToggleOffcanvasProducts} className={`offcanvas-link ${showOffcanvasProducts ? 'show' : ''}`}>
+              Products
+              <TriangleSvg angle={showOffcanvasProducts ? 180 : 0} color={"white"} />
             </div>
+            <div className={`offcanvas-sublinks products ${offcanvasProductsTransition ? 'transition' : ''}`}>
+              <NavLink to="/products/personal-insurance" end onClick={handleCloseOffcanvas} className="offcanvas-sublink">
+                Personal Insurance
+              </NavLink>
+              <NavLink to="/products/company-insurance" end onClick={handleCloseOffcanvas} className="offcanvas-sublink">
+                Company Insurance
+              </NavLink>
+            </div>
+            <div onClick={showOffcanvasProducts ? undefined : handleToggleOffcanvasProducts} className={`offcanvas-link-bottom ${showOffcanvasProducts ? 'show' : ''}`}></div>
             <div className="offcanvas-divider"></div>
             <NavLink to="/our-team" end onClick={handleCloseOffcanvas} className="offcanvas-link">
-              <span>Our Team</span>
+              Our Team
             </NavLink>
+            <NavLink to="/our-team" end onClick={handleCloseOffcanvas} className="offcanvas-link-bottom"></NavLink>
             <div className="offcanvas-divider"></div>
-            <div onClick={() => {}} className="offcanvas-link">
-              <span>Services</span>
-              <TriangleSvg angle={0} color={"white"} />
+            <div onClick={handleToggleOffcanvasServices} className={`offcanvas-link ${showOffcanvasServices ? 'show' : ''}`}>
+              Services
+              <TriangleSvg angle={showOffcanvasServices ? 180 : 0} color={"white"} />
             </div>
+            <div className={`offcanvas-sublinks services ${offcanvasServicesTransition ? 'transition' : ''}`}>
+              <NavLink to="/services/existing-businesses" end onClick={handleCloseOffcanvas} className="offcanvas-sublink">
+                Existing Businesses
+              </NavLink>
+              <NavLink to="/services/new-startups" end onClick={handleCloseOffcanvas} className="offcanvas-sublink">
+                New Startups
+              </NavLink>
+            </div>
+            <div onClick={showOffcanvasServices ? undefined : handleToggleOffcanvasServices} className={`offcanvas-link-bottom ${showOffcanvasServices ? 'show' : ''}`}></div>
             <div className="offcanvas-divider"></div>
             <NavLink to="/our-partners" end onClick={handleCloseOffcanvas} className="offcanvas-link">
-              <span>Our Partners</span>
+              Our Partners
             </NavLink>
+            <NavLink to="/our-partners" end onClick={handleCloseOffcanvas} className="offcanvas-link-bottom"></NavLink>
             <div className="offcanvas-divider"></div>
             <NavLink to="/careers" end onClick={handleCloseOffcanvas} className="offcanvas-link">
-              <span>Careers</span>
+              Careers
             </NavLink>
+            <NavLink to="/careers" end onClick={handleCloseOffcanvas} className="offcanvas-link-bottom"></NavLink>
             <div className="offcanvas-divider"></div>
             <NavLink to="/activities" end onClick={handleCloseOffcanvas} className="offcanvas-link">
-              <span>Activities</span>
+              Activities
             </NavLink>
+            <NavLink to="/activities" end onClick={handleCloseOffcanvas} className="offcanvas-link-bottom"></NavLink>
           </div>
           <div className="offcanvas-socials">
             <a href={FACEBOOK_URL} target="_blank" rel="noopener noreferrer">
@@ -164,12 +237,16 @@ const App = () => {
       
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/about-us" element={<About />} />
-        <Route path="/our-team" element={<Team />} />
-        <Route path="/our-partners" element={<Partners />} />
-        <Route path="/careers" element={<Careers />} />
-        <Route path="/activities" element={<Activities />} />
-        <Route path="/contact-us" element={<Contact />} />
+        <Route path="about-us" element={<About />} />
+        <Route path="products/personal-insurance" element={<PersonalInsurance />} />
+        <Route path="products/company-insurance" element={<CompanyInsurance />} />
+        <Route path="our-team" element={<Team />} />
+        <Route path="services/existing-businesses" element={<ExistingBusinesses />} />
+        <Route path="services/new-startups" element={<NewStartups />} />
+        <Route path="our-partners" element={<Partners />} />
+        <Route path="careers" element={<Careers />} />
+        <Route path="activities" element={<Activities />} />
+        <Route path="contact-us" element={<Contact />} />
         <Route path="*" element={<Home />} />
       </Routes>
     </>
