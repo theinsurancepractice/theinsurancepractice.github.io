@@ -145,7 +145,7 @@ const App = () => {
           {/* <div className="navbar-location">
             <img src={mapMarker} alt="Map Marker" className="map-marker" />
           </div> */}
-          <NavLink to="/contact-us" end className="navbar-consult">
+          <NavLink to="/contact-us" end className="navbar-contact">
             Contact Us
             <img src={chatBubble} alt="Chat Bubble" className="chat-bubble" />
           </NavLink>
@@ -163,14 +163,12 @@ const App = () => {
             <NavLink to="/" end onClick={handleCloseOffcanvas} className="offcanvas-link">
               Home
             </NavLink>
-            <NavLink to="/" end onClick={handleCloseOffcanvas} className="offcanvas-link-bottom"></NavLink>
             <div className="offcanvas-divider"></div>
             <NavLink to="/about-us" end onClick={handleCloseOffcanvas} className="offcanvas-link">
               About Us
             </NavLink>
-            <NavLink to="/about-us" end onClick={handleCloseOffcanvas} className="offcanvas-link-bottom"></NavLink>
             <div className="offcanvas-divider"></div>
-            <div onClick={handleToggleOffcanvasProducts} className={`offcanvas-link ${showOffcanvasProducts ? 'show' : ''}`}>
+            <div onClick={handleToggleOffcanvasProducts} className={`offcanvas-link top ${showOffcanvasProducts ? 'show' : ''}`}>
               Products
               <TriangleSvg angle={showOffcanvasProducts ? 180 : 0} color={"white"} />
             </div>
@@ -187,9 +185,8 @@ const App = () => {
             <NavLink to="/our-team" end onClick={handleCloseOffcanvas} className="offcanvas-link">
               Our Team
             </NavLink>
-            <NavLink to="/our-team" end onClick={handleCloseOffcanvas} className="offcanvas-link-bottom"></NavLink>
             <div className="offcanvas-divider"></div>
-            <div onClick={handleToggleOffcanvasServices} className={`offcanvas-link ${showOffcanvasServices ? 'show' : ''}`}>
+            <div onClick={handleToggleOffcanvasServices} className={`offcanvas-link top ${showOffcanvasServices ? 'show' : ''}`}>
               Services
               <TriangleSvg angle={showOffcanvasServices ? 180 : 0} color={"white"} />
             </div>
@@ -206,17 +203,14 @@ const App = () => {
             <NavLink to="/our-partners" end onClick={handleCloseOffcanvas} className="offcanvas-link">
               Our Partners
             </NavLink>
-            <NavLink to="/our-partners" end onClick={handleCloseOffcanvas} className="offcanvas-link-bottom"></NavLink>
             <div className="offcanvas-divider"></div>
             <NavLink to="/careers" end onClick={handleCloseOffcanvas} className="offcanvas-link">
               Careers
             </NavLink>
-            <NavLink to="/careers" end onClick={handleCloseOffcanvas} className="offcanvas-link-bottom"></NavLink>
             <div className="offcanvas-divider"></div>
             <NavLink to="/activities" end onClick={handleCloseOffcanvas} className="offcanvas-link">
               Activities
             </NavLink>
-            <NavLink to="/activities" end onClick={handleCloseOffcanvas} className="offcanvas-link-bottom"></NavLink>
           </div>
           <div className="offcanvas-socials">
             <a href={FACEBOOK_URL} target="_blank" rel="noopener noreferrer">
