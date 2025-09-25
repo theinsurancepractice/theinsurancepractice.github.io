@@ -144,7 +144,7 @@ const App = () => {
         </div>
       </nav>
 
-      <div className={`offcanvas-backdrop ${showOffcanvas ? 'show' : ''}`} onClick={handleCloseOffcanvas}></div>
+      {showOffcanvas && <div onClick={handleCloseOffcanvas} className="offcanvas-backdrop"></div>}
 
       <nav className={`offcanvas ${showOffcanvas ? 'show' : ''}`}>
         <div className="offcanvas-left">
