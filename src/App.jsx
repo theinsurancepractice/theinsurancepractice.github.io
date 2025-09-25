@@ -1,17 +1,9 @@
 import { useState, useEffect } from 'react'
 import { Routes, Route, NavLink } from "react-router"
-import Container from 'react-bootstrap/Container'
-import Nav from 'react-bootstrap/Nav'
-import Navbar from 'react-bootstrap/Navbar'
-import NavDropdown from 'react-bootstrap/NavDropdown'
-import Button from 'react-bootstrap/Button'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
-import Offcanvas from 'react-bootstrap/Offcanvas'
-import mapMarker from './assets/map-marker.png'
 import chatBubble from './assets/chat-bubble.png'
-import HamburgerSvg from './svg/HamburgerSvg.jsx'
+import mapMarker from './assets/map-marker.png'
 import FacebookSvg from './svg/FacebookSvg.jsx'
+import HamburgerSvg from './svg/HamburgerSvg.jsx'
 import InstagramSvg from './svg/InstagramSvg.jsx'
 import TriangleSvg from './svg/TriangleSvg.jsx'
 import XSvg from './svg/XSvg.jsx'
@@ -109,7 +101,7 @@ const App = () => {
 
   return (
     <>
-      <Navbar expand="lg" className="navbar">
+      <nav className="navbar">
         <div className="navbar-left">
           <div className="offcanvas-button" onClick={handleShowOffcanvas}>
             <HamburgerSvg />
@@ -142,22 +134,19 @@ const App = () => {
           </NavLink>
         </div>
         <div className="navbar-right">
-          {/* <div className="navbar-location">
-            <img src={mapMarker} alt="Map Marker" className="map-marker" />
-          </div> */}
           <NavLink to="/contact-us" end className="navbar-contact">
             Contact Us
             <img src={chatBubble} alt="Chat Bubble" className="chat-bubble" />
           </NavLink>
+          {/* <div className="navbar-location">
+            <img src={mapMarker} alt="Map Marker" className="map-marker" />
+          </div> */}
         </div>
-      </Navbar>
+      </nav>
 
-      <Offcanvas 
-        show={true} 
-        backdrop={showOffcanvas} 
-        onHide={handleCloseOffcanvas} 
-        className={`${showOffcanvas ? 'show-offcanvas' : 'hide-offcanvas'}`}
-      >
+      <div className={`offcanvas-backdrop ${showOffcanvas ? 'show' : ''}`} onClick={handleCloseOffcanvas}></div>
+
+      <nav className={`offcanvas ${showOffcanvas ? 'show' : ''}`}>
         <div className="offcanvas-left">
           <div>
             <NavLink to="/" end onClick={handleCloseOffcanvas} className="offcanvas-link">
@@ -227,22 +216,24 @@ const App = () => {
           </div>
           <div className="offcanvas-right-bottom"></div>
         </div>
-      </Offcanvas>
-      
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="about-us" element={<About />} />
-        <Route path="products/personal-insurance" element={<PersonalInsurance />} />
-        <Route path="products/company-insurance" element={<CompanyInsurance />} />
-        <Route path="our-team" element={<Team />} />
-        <Route path="services/existing-businesses" element={<ExistingBusinesses />} />
-        <Route path="services/new-startups" element={<NewStartups />} />
-        <Route path="our-partners" element={<Partners />} />
-        <Route path="careers" element={<Careers />} />
-        <Route path="activities" element={<Activities />} />
-        <Route path="contact-us" element={<Contact />} />
-        <Route path="*" element={<Home />} />
-      </Routes>
+      </nav>
+    
+      <main>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="about-us" element={<About />} />
+          <Route path="products/personal-insurance" element={<PersonalInsurance />} />
+          <Route path="products/company-insurance" element={<CompanyInsurance />} />
+          <Route path="our-team" element={<Team />} />
+          <Route path="services/existing-businesses" element={<ExistingBusinesses />} />
+          <Route path="services/new-startups" element={<NewStartups />} />
+          <Route path="our-partners" element={<Partners />} />
+          <Route path="careers" element={<Careers />} />
+          <Route path="activities" element={<Activities />} />
+          <Route path="contact-us" element={<Contact />} />
+          <Route path="*" element={<Home />} />
+        </Routes>
+      </main>
     </>
   )
 }

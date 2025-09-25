@@ -1,10 +1,10 @@
 .navbar {
+  position: relative;
+  width: 100vw;
+  height: 4rem;
   display: flex;
   justify-content: space-between;
-  flex-wrap: nowrap;
   background-color: white;
-  height: 4rem;
-  padding: 0;
 }
 
 .navbar::after {
@@ -46,7 +46,7 @@
 .navbar-right {
   display: flex;
   align-items: center;
-  flex-direction: row-reverse;
+  min-width: 0;
 }
 
 .navbar-location {
@@ -74,6 +74,7 @@
   font-weight: bold;
   font-size: 0.9rem;
   text-decoration: none;
+  white-space: nowrap;
 }
 
 .chat-bubble {
@@ -94,22 +95,22 @@
   cursor: pointer;
 }
 
-/* Boostrap default class name */
 .offcanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  max-width: 100%;
+  z-index: 1;
   display: inline-flex;
   flex-direction: row;
   color: white;
   background-color: transparent;
-  border: none !important;
+  border: none;
+  transform: translateX(-101%);
   transition: transform 0.3s ease-in-out;
-  --bs-offcanvas-width: auto;
 }
 
-.offcanvas.hide-offcanvas {
-  transform: translateX(-101%) !important;
-}
-
-.offcanvas.show-offcanvas {
+.offcanvas.show {
   transform: translateX(0);
 }
 
@@ -120,7 +121,8 @@
   height: 100vh;
   width: 14rem;
   font-size: 0.9rem;
-  z-index: 1046;
+  z-index: 2;
+  overflow: auto;
 }
 
 .offcanvas-right {
@@ -172,6 +174,10 @@
   height: 0.75rem;
 }
 
+.offcanvas-link:focus {
+  outline-offset: -2px;
+}
+
 .offcanvas-link:hover,
 .offcanvas-link:focus,
 .offcanvas-link-bottom:hover,
@@ -189,8 +195,7 @@
   display: flex;
   flex-direction: column;
   padding-left: 2rem;
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-weight: 500;
   overflow: hidden;
   max-height: 0;
 }
@@ -206,9 +211,9 @@
   text-decoration: none;
 }
 
-/* .offcanvas-sublink:focus {
+.offcanvas-sublink:focus {
   outline-offset: -2px;
-} */
+}
 
 .offcanvas-sublink::before {
   content: "";
@@ -228,6 +233,7 @@
   left: 0;
   height: 100%;
   border-left: 1px solid rgba(224, 224, 224, 0.6);
+  padding-left: 1px;
 }
 
 .offcanvas-sublink:last-child::after {
@@ -255,14 +261,26 @@
   margin-left: 0.7rem;
 }
 
+@media (max-width: 12rem) {
+  .chat-bubble {
+    display: none;
+  }
+}
+
+@media (max-width: 10rem) {
+  .offcanvas-sublinks {
+    padding-left: 1rem;
+  }
+}
+
 /* 640px */
 @media (min-width: 40rem) {
-  .offcanvas-left {
-    width: calc(14rem + 0.25 * (100vw - 40rem));
-    font-size: 1rem;
-  }
   .navbar-contact {
     width: 9rem;
+    font-size: 1rem;
+  }
+  .offcanvas-left {
+    width: calc(14rem + 0.25 * (100vw - 40rem));
     font-size: 1rem;
   }
 }
