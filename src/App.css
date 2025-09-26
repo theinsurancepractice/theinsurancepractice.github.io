@@ -24,6 +24,7 @@
 }
 
 .navbar-link {
+  position: relative;
   display: none;
   align-items: center;
   font-size: 0.9rem;
@@ -33,14 +34,67 @@
   text-decoration: none;
 }
 
-.navbar-link:hover,
-.navbar-link:focus {
+.navbar-link:hover {
   color: #238dc1;
   cursor: pointer;
 }
 
 .navbar-link.active {
   color: #238dc1;
+}
+
+.navbar-sublinks {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
+  border-radius: 1rem;
+  z-index: 1;
+  overflow: hidden;
+  max-height: 0rem;
+  transition: max-height 0.3s ease-in-out;
+}
+
+.navbar-sublinks-border {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #238dc1;
+  border-radius: 1rem;
+}
+
+.navbar-sublink {
+  padding: 0.25rem 0.5rem;
+  color: black;
+  font-weight: 500;
+  text-decoration: none;
+  white-space: nowrap;
+  outline-offset: -2px;
+}
+
+.navbar-sublink:first-child {
+  padding-top: 0.5rem;
+}
+
+.navbar-sublink:last-child {
+  padding-bottom: 0.5rem;
+}
+
+.navbar-sublink:hover,
+.navbar-sublink.active {
+  color: #238dc1;
+}
+
+.navbar-sublink-divider {
+  height: 1px;
+  width: 90%;
+  background-color: lightslategray;
+  opacity: 0.6;
+  align-self: center;
+}
+
+.navbar-sublink-divider:hover {
+  cursor: auto;
 }
 
 .navbar-right {
@@ -90,8 +144,7 @@
   height: 4rem;
 }
 
-.offcanvas-button:hover,
-.offcanvas-button:focus {
+.offcanvas-button:hover {
   cursor: pointer;
 }
 
@@ -152,8 +205,7 @@
   background-color: #238dc1;
 }
 
-.offcanvas-right-top:hover,
-.offcanvas-right-top:focus {
+.offcanvas-right-top:hover {
   cursor: pointer;
 }
 
@@ -190,14 +242,11 @@
 }
 
 .offcanvas-link:hover,
-.offcanvas-link:focus,
-.offcanvas-link-bottom:hover,
-.offcanvas-link-bottom:focus {
+.offcanvas-link-bottom:hover {
   cursor: pointer;
 }
 
-.offcanvas-link-bottom.show:hover,
-.offcanvas-link-bottom.show:focus {
+.offcanvas-link-bottom.show:hover {
   cursor: auto;
 }
 
@@ -323,9 +372,6 @@
   .offcanvas-button {
     display: none;
   }
-  /* .offcanvas {
-    display: none;
-  } */
 }
 
 /* 1280px */
