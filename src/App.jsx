@@ -18,6 +18,7 @@ import NewStartups from './NewStartups.jsx'
 import Partners from './Partners.jsx'
 import PersonalInsurance from './PersonalInsurance.jsx'
 import Team from './Team.jsx'
+import TanTzeTingAleathea from './team/TanTzeTingAleathea.jsx'
 import './App.css'
 
 const FACEBOOK_URL = "https://www.facebook.com/"
@@ -294,6 +295,7 @@ const App = () => {
           <Route path="products/personal-insurance" element={<PersonalInsurance />} />
           <Route path="products/company-insurance" element={<CompanyInsurance />} />
           <Route path="our-team" element={<Team />} />
+          <Route path="our-team/tan-tze-ting-aleathea" element={<TanTzeTingAleathea />} />
           <Route path="services/existing-businesses" element={<ExistingBusinesses />} />
           <Route path="services/new-startups" element={<NewStartups />} />
           <Route path="our-partners" element={<Partners />} />
