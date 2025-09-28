@@ -2,7 +2,7 @@ import { NavLink } from 'react-router'
 import tanTzeTingAleathea from './assets/tan-tze-ting-aleathea.jpg'
 
 const Team = () => (
-  <div className="team">
+  <div className="team container">
     <h2>Our Team</h2>
     <div className="team-members">
       <div className="team-member">

@@ -27,6 +27,9 @@ const MIN_DESKTOP_WIDTH = 1024
 
 const App = () => {
   const location = useLocation()
+  const productsActive = ['/products/personal-insurance', '/products/company-insurance'].includes(location.pathname)
+  const servicesActive = ['/services/existing-businesses', '/services/new-startups'].includes(location.pathname)
+  const teamActive = ['/our-team/tan-tze-ting-aleathea'].includes(location.pathname)
   const [navbarProductsTriangleAngle, setNavbarProductsTriangleAngle] = useState(0)
   const [navbarServicesTriangleAngle, setNavbarServicesTriangleAngle] = useState(0)
   
@@ -153,7 +156,7 @@ const App = () => {
             onFocus={showNavbarSublinksProducts}
             onMouseLeave={hideNavbarSublinksProducts}
             onBlur={hideNavbarSublinksProducts}
-            className={`navbar-link ${location.pathname === '/products/personal-insurance' || location.pathname === '/products/company-insurance' ? 'active' : ''}`}
+            className={`navbar-link ${productsActive ? 'active' : ''}`}
           >
             Products
             <TriangleSvg angle={navbarProductsTriangleAngle} color={"#238dc1"} />
@@ -169,7 +172,7 @@ const App = () => {
               </div>
             </div>
           </div>
-          <NavLink to="/our-team" end className="navbar-link">
+          <NavLink to="/our-team" end className={`navbar-link ${teamActive ? 'active' : ''}`}>
             Our Team
           </NavLink>
           <div 
@@ -177,7 +180,7 @@ const App = () => {
             onFocus={showNavbarSublinksServices}
             onMouseLeave={hideNavbarSublinksServices}
             onBlur={hideNavbarSublinksServices}
-            className={`navbar-link ${location.pathname === '/services/existing-businesses' || location.pathname === '/services/new-startups' ? 'active' : ''}`}
+            className={`navbar-link ${servicesActive ? 'active' : ''}`}
           >
             Services
             <TriangleSvg angle={navbarServicesTriangleAngle} color={"#238dc1"} />
