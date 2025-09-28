@@ -358,6 +358,12 @@ p {
   gap: 3rem;
 }
 
+.team-member {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 .team-member-photo {
   max-width: min(12rem, 100%);
   max-height: 12rem;
