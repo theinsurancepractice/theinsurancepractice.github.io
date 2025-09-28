@@ -352,6 +352,16 @@ p {
   margin-left: 0.7rem;
 }
 
+.about-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.about-section h3 {
+  color: #238dc1;
+}
+
 .team-members {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(14rem, 100%), 1fr));
@@ -492,6 +502,9 @@ p {
   .offcanvas-button {
     display: none;
   }
+  .about {
+    max-width: 58rem;
+  }
   .member {
     flex-direction: row;
     max-width: 58rem;
@@ -531,6 +544,7 @@ p {
     width: 12rem;
     font-size: 1.1rem;
   }
+  .about,
   .member {
     margin-left: auto;
     margin-right: auto;
