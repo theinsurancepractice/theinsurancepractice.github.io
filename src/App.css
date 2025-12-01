@@ -229,7 +229,7 @@ p {
   display: flex;
   flex-direction: column;
   background-color: #238dc1;
-  height: 100vh;
+  height: 100%;
   width: clamp(14rem, calc(14rem + 0.25 * (100vw - 40rem)), 16rem);
   font-size: clamp(0.9rem, calc(0.9rem + 0.0125 * (100vw - 40rem)), 1rem);
   z-index: 2;
