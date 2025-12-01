@@ -209,6 +209,7 @@ p {
   position: fixed;
   top: 0;
   left: 0;
+  bottom: 0;
   max-width: 100%;
   z-index: 1;
   display: inline-flex;
@@ -218,7 +219,6 @@ p {
   border: none;
   transform: translateX(-101%);
   transition: transform 0.3s ease-in-out;
-  height: 100dvh;
 }
 
 .offcanvas.show {
