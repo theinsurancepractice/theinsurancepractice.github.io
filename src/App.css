@@ -1,3 +1,11 @@
+body {
+  margin: var(--navbar-height) 0 0;
+}
+
+body.no-scroll {
+  overflow: hidden;
+}
+
 main {
   margin-left: auto;
   margin-right: auto;
@@ -6,7 +14,9 @@ main {
 
 h2 {
   font-size: 1.5rem;
-  margin-bottom: 1.5rem;
+  margin: 0;
+  padding-top: 1.25rem;
+  padding-bottom: 1.5rem;
 }
 
 h3 {
@@ -30,18 +40,23 @@ p {
 }
 
 .navbar {
-  position: relative;
+  position: fixed;
+  top: 0;
   width: 100%;
-  height: 4rem;
+  height: var(--navbar-height);
   display: flex;
   justify-content: space-between;
   background-color: white;
 }
 
+.navbar.hidden {
+  visibility: hidden;
+}
+
 .navbar::after {
   content: "";
   position: absolute;
-  bottom: 0;
+  bottom: -1px;
   left: 0;
   width: 100%;
   height: 1px; /* thickness of the border */
@@ -203,6 +218,7 @@ p {
   border: none;
   transform: translateX(-101%);
   transition: transform 0.3s ease-in-out;
+  padding-bottom: var(--safe-area-inset-bottom);
 }
 
 .offcanvas.show {
@@ -481,13 +497,15 @@ p {
 
 /* 1024px */
 @media (min-width: 64rem) {
+  :root {
+    --navbar-height: 5rem;
+  }
   main {
     max-width: 64rem;
   }
   .navbar {
     padding-left: 1.875rem;
     padding-right: calc(1.875rem - 100vw + 100%);
-    height: 5rem;
   }
   .navbar-link {
     display: flex;
@@ -524,6 +542,9 @@ p {
 
 /* 1280px */
 @media (min-width: 80rem) {
+  :root {
+    --navbar-height: 6rem;
+  }
   main {
     max-width: 80rem;
   }
@@ -534,7 +555,6 @@ p {
   .navbar {
     padding-left: 3.75rem;
     padding-right: calc(3.75rem - 100vw + 100%);
-    height: 6rem;
   }
   .navbar-link {
     font-size: 1rem;
@@ -557,11 +577,11 @@ p {
 
 /* 1536px */
 @media (min-width: 96rem) {
+  :root {
+    --navbar-height: 7rem;
+  }
   main {
     max-width: 96rem;
-  }
-  .navbar {
-    height: 7rem;
   }
   .navbar-link {
     font-size: 1.1rem;

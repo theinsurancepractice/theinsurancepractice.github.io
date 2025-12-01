@@ -103,8 +103,15 @@ const App = () => {
     setNavbarServicesTriangleAngle(0)
   }
 
-  const handleShowOffcanvas = () => setShowOffcanvas(true)
-  const handleCloseOffcanvas = () => setShowOffcanvas(false)
+  const handleShowOffcanvas = () => {
+    setShowOffcanvas(true)
+    document.body.classList.add('no-scroll')
+  }
+  
+  const handleCloseOffcanvas = () => {
+    setShowOffcanvas(false)
+    document.body.classList.remove('no-scroll')
+  }
 
   const handleToggleOffcanvasProducts = () => {
     const offcanvasSublinks = document.querySelector('.offcanvas-sublinks.products')
@@ -140,7 +147,7 @@ const App = () => {
 
   return (
     <>
-      <nav className="navbar">
+      <nav className={`navbar ${showOffcanvas ? 'hidden' : ''}`}>
         <div className="navbar-left">
           <div className="offcanvas-button" onClick={handleShowOffcanvas}>
             <HamburgerSvg />
