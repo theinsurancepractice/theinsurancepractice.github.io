@@ -40,6 +40,9 @@ const App = () => {
   const [offcanvasServicesTransition, setOffcanvasServicesTransition] = useState(false)  // Turn on or off transition for offcanvas services
   const [offcanvasTabIndex, setOffcanvasTabIndex] = useState(0)                          // Set to -1 to disable keyboard navigation when vw >= 1024px
   
+  // Close offcanvas when location changes
+  useEffect(() => handleCloseOffcanvas(), [location.pathname])
+  
   // Close offcanvas if window is resized to desktop size
   useEffect(() => {
     const handleResize = () => {
