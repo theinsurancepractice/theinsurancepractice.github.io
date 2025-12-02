@@ -386,11 +386,6 @@ h3, h4, p {
 }
 
 .insurance-types {
-  /* display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  row-gap: 2rem;
-  column-gap: 2rem; */
   display: grid;
   grid-template-columns: repeat(auto-fill, min(12rem, 100%));
   gap: 2rem;
