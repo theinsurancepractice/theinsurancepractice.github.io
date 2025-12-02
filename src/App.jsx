@@ -10,7 +10,7 @@ import XSvg from './svg/XSvg.jsx'
 import About from './About.jsx'
 import Activities from './Activities.jsx'
 import Careers from './Careers.jsx'
-import CompanyInsurance from './CompanyInsurance.jsx'
+import CorporateInsurance from './CorporateInsurance.jsx'
 import Contact from './Contact.jsx'
 import ExistingBusinesses from './ExistingBusinesses.jsx'
 import Home from './Home.jsx'
@@ -27,7 +27,7 @@ const MIN_DESKTOP_WIDTH = 1024
 
 const App = () => {
   const location = useLocation()
-  const productsActive = ['/products/personal-insurance', '/products/company-insurance'].includes(location.pathname)
+  const productsActive = ['/products/personal-insurance', '/products/corporate-insurance'].includes(location.pathname)
   const servicesActive = ['/services/existing-businesses', '/services/new-startups'].includes(location.pathname)
   const teamActive = ['/our-team/tan-tze-ting-aleathea'].includes(location.pathname)
   const [navbarProductsTriangleAngle, setNavbarProductsTriangleAngle] = useState(0)
@@ -176,8 +176,8 @@ const App = () => {
                   Personal Insurance
                 </NavLink>
                 <div className="navbar-sublink-divider"></div>
-                <NavLink to="/products/company-insurance" end className="navbar-sublink">
-                  Company Insurance
+                <NavLink to="/products/corporate-insurance" end className="navbar-sublink">
+                  Corporate Insurance
                 </NavLink>
               </div>
             </div>
@@ -248,8 +248,8 @@ const App = () => {
               <NavLink to="/products/personal-insurance" end onClick={handleCloseOffcanvas} tabIndex={offcanvasTabIndex} className="offcanvas-sublink">
                 Personal Insurance
               </NavLink>
-              <NavLink to="/products/company-insurance" end onClick={handleCloseOffcanvas} tabIndex={offcanvasTabIndex} className="offcanvas-sublink">
-                Company Insurance
+              <NavLink to="/products/corporate-insurance" end onClick={handleCloseOffcanvas} tabIndex={offcanvasTabIndex} className="offcanvas-sublink">
+                Corporate Insurance
               </NavLink>
             </div>
             <div onClick={showOffcanvasProducts ? undefined : handleToggleOffcanvasProducts} className={`offcanvas-link-bottom ${showOffcanvasProducts ? 'show' : ''}`}></div>
@@ -306,7 +306,7 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="about-us" element={<About />} />
           <Route path="products/personal-insurance" element={<PersonalInsurance />} />
-          <Route path="products/company-insurance" element={<CompanyInsurance />} />
+          <Route path="products/corporate-insurance" element={<CorporateInsurance />} />
           <Route path="our-team" element={<Team />} />
           <Route path="our-team/tan-tze-ting-aleathea" element={<TanTzeTingAleathea />} />
           <Route path="services/existing-businesses" element={<ExistingBusinesses />} />
