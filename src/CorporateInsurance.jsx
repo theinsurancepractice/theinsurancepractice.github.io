@@ -25,7 +25,7 @@ import cartoonInlandTransit from './assets/cartoon-inland-transit.png'
 import cartoonWarehousemanLiability from './assets/cartoon-warehouseman-liability.png'
 
 const CorporateInsurance = () => (
-  <div className="corporate-insurance container">
+  <div className="insurance container">
     <h2>Corporate Insurance</h2>
     <div className="insurance-group">
       <h3 className="insurance-group-title-first">Property & Casualty</h3>

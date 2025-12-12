@@ -401,7 +401,16 @@ h3, h4, p {
   aspect-ratio: 1 / 1;
   padding-left: 0.25rem;
   padding-right: 0.25rem;
+  border-radius: 0.5rem;
   box-shadow: 0 0 1px 1px rgba(0,0,0,.08), 0 4px 7px 2px rgba(0,0,0,.08);
+}
+
+.insurance-type:hover {
+  border: 2px solid var(--theme-color);
+  padding-left: calc(0.25rem - 2px);
+  padding-right: calc(0.25rem - 2px);
+  background-color: rgba(35, 141, 193, 0.05);
+  cursor: pointer;
 }
 
 .insurance-type img {
@@ -548,7 +557,7 @@ h3, h4, p {
 }
 
 @media (min-width: 60rem) {
-  .corporate-insurance {
+  .insurance {
     margin-right: 0;
   }
   .insurance-types {
@@ -625,7 +634,7 @@ h3, h4, p {
     width: 12rem;
     font-size: 1.1rem;
   }
-  .corporate-insurance {
+  .insurance {
     margin-right: 0;
   }
   .about,
@@ -654,7 +663,7 @@ h3, h4, p {
   .navbar-link {
     font-size: 1.1rem;
   }
-  .corporate-insurance {
+  .insurance {
     margin-right: 0;
   }
   .about,
