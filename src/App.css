@@ -387,8 +387,8 @@ h3, h4, p {
 
 .insurance-types {
   display: grid;
-  grid-template-columns: repeat(auto-fill, min(12rem, 100%));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fill, clamp(8rem, -12rem + 50vw, 12rem));
+  gap: clamp(1.5rem, -1rem + 6.25vw, 2rem);
   justify-content: center;
 }
 
@@ -399,16 +399,25 @@ h3, h4, p {
   align-items: center;
   text-align: center;
   aspect-ratio: 1 / 1;
-  width: 12rem;
-  max-width: 100%;
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
   box-shadow: 0 0 1px 1px rgba(0,0,0,.08), 0 4px 7px 2px rgba(0,0,0,.08);
 }
 
 .insurance-type img {
   width: 100%;
-  max-width: 8rem;
+  max-width: clamp(6rem, -4rem + 25vw, 8rem);
   aspect-ratio: 8 / 7;
   object-fit: contain;
+}
+
+.insurance-type h4 {
+  font-size: clamp(0.8rem, -0.2rem + 2.5vw, 1rem);
+  line-height: 1.49;  /* To stop visual glitch at 208px - 209px */
+}
+
+.insurance-type span {
+  white-space: nowrap;
 }
 
 .team-members {
@@ -499,6 +508,16 @@ h3, h4, p {
   align-self: center;
 }
 
+@media (max-width: 24rem) {
+  .insurance-types {
+    grid-template-columns: repeat(auto-fill, min(clamp(6rem, -4rem + 50vw, 8rem), 100%));
+    gap: clamp(1rem, -1.5rem + 12.5vw, 1.5rem);
+  }
+  .insurance-type img {
+    max-width: clamp(4rem, -6rem + 50vw, 6rem);
+  }
+}
+
 @media (max-width: 20rem) {
   .partners-logos {
     margin-left: 1rem;
@@ -529,6 +548,9 @@ h3, h4, p {
 }
 
 @media (min-width: 60rem) {
+  .corporate-insurance {
+    margin-right: 0;
+  }
   .insurance-types {
     justify-content: start;
   }
@@ -603,6 +625,9 @@ h3, h4, p {
     width: 12rem;
     font-size: 1.1rem;
   }
+  .corporate-insurance {
+    margin-right: 0;
+  }
   .about,
   .member {
     margin-left: auto;
@@ -628,6 +653,9 @@ h3, h4, p {
   }
   .navbar-link {
     font-size: 1.1rem;
+  }
+  .corporate-insurance {
+    margin-right: 0;
   }
   .about,
   .member {

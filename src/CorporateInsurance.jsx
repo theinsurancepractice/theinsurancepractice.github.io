@@ -40,11 +40,11 @@ const CorporateInsurance = () => (
         </div>
         <div className="insurance-type">
           <img src={cartoonContractor} alt="Contractor All Risk" />
-          <h4>Contractor All Risk</h4>
+          <h4>Contractor <span>All Risk</span></h4>
         </div>
         <div className="insurance-type">
           <img src={cartoonMachinery} alt="Machinery All Risk" />
-          <h4>Machinery All Risk</h4>
+          <h4>Machinery <span>All Risk</span></h4>
         </div>
         <div className="insurance-type">
           <img src={cartoonPlateGlass} alt="Plate Glass" />
@@ -127,7 +127,7 @@ const CorporateInsurance = () => (
       <div className="insurance-types">
         <div className="insurance-type">
           <img src={cartoonCommercialMotor} alt="Commercial Motor Fleet" />
-          <h4>Commercial Motor Fleet</h4>
+          <h4>Commercial <span>Motor Fleet</span></h4>
         </div>
       </div>
     </div>
