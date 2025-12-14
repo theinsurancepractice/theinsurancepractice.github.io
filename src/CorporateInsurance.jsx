@@ -1,3 +1,4 @@
+import { NavLink } from "react-router"
 import cartoonFire from './assets/cartoon-fire.png'
 import cartoonBusinessPackages from './assets/cartoon-business-packages.png'
 import cartoonContractor from './assets/cartoon-contractor.png'
@@ -30,18 +31,18 @@ const CorporateInsurance = () => (
     <div className="insurance-group">
       <h3 className="insurance-group-title-first">Property & Casualty</h3>
       <div className="insurance-types">
-        <div className="insurance-type">
+        <NavLink to="/products/corporate-insurance/fire-all-risk" end className="insurance-type">
           <img src={cartoonFire} alt="Fire / All Risk" />
           <h4>Fire / All Risk</h4>
-        </div>
-        <div className="insurance-type">
+        </NavLink>
+        <NavLink to="/products/corporate-insurance/business-packages" end className="insurance-type">
           <img src={cartoonBusinessPackages} alt="Business Packages" />
           <h4>Business Packages</h4>
-        </div>
-        <div className="insurance-type">
+        </NavLink>
+        <NavLink to="/products/corporate-insurance/contractor-all-risk" end className="insurance-type">
           <img src={cartoonContractor} alt="Contractor All Risk" />
           <h4>Contractor <span>All Risk</span></h4>
-        </div>
+        </NavLink>
         <div className="insurance-type">
           <img src={cartoonMachinery} alt="Machinery All Risk" />
           <h4>Machinery <span>All Risk</span></h4>

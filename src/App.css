@@ -7,10 +7,14 @@ body.no-scroll {
 }
 
 main {
-  margin-left: auto;
-  margin-right: auto;
   padding-top: 1.25rem;
   padding-bottom: 3rem;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+main.scrollbar-gutter {
+  scrollbar-gutter: stable;
 }
 
 h2 {
@@ -29,8 +33,8 @@ h3, h4, p {
 }
 
 .container {
-  margin-left: clamp(1rem, calc((100% - 14rem) * 0.5), 3rem);
-  margin-right: clamp(1rem, calc((100% - 14rem) * 0.5), 3rem);
+  padding-left: clamp(1rem, calc((100% - 14rem) * 0.5), 3rem);
+  padding-right: clamp(1rem, calc((100% - 14rem) * 0.5), 3rem);
 }
 
 .bold {
@@ -376,6 +380,10 @@ h3, h4, p {
   color: var(--theme-color);
 }
 
+.insurance-group {
+  container-type: inline-size;
+}
+
 .insurance-group h3 {
   margin-top: 3rem;
   margin-bottom: 1.5rem;
@@ -403,6 +411,8 @@ h3, h4, p {
   padding-right: 0.25rem;
   border-radius: 0.5rem;
   box-shadow: 0 0 1px 1px rgba(0,0,0,.08), 0 4px 7px 2px rgba(0,0,0,.08);
+  color: black;
+  text-decoration: none;
 }
 
 .insurance-type:hover {
@@ -427,6 +437,20 @@ h3, h4, p {
 
 .insurance-type span {
   white-space: nowrap;
+}
+
+.product-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.product-group img {
+  width: 100%;
+  max-height: 20rem;
+  aspect-ratio: 8 / 5;
+  object-fit: cover;
+  z-index: -1;
 }
 
 .team-members {
@@ -507,7 +531,7 @@ h3, h4, p {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(12rem, 100%), 1fr));
   gap: 3rem;
-  margin: 3rem;
+  margin-top: 1.5rem;
 }
 
 .partners-logo {
@@ -517,20 +541,19 @@ h3, h4, p {
   align-self: center;
 }
 
-@media (max-width: 24rem) {
+@container (min-width: 54rem) {
   .insurance-types {
-    grid-template-columns: repeat(auto-fill, min(clamp(6rem, -4rem + 50vw, 8rem), 100%));
-    gap: clamp(1rem, -1.5rem + 12.5vw, 1.5rem);
-  }
-  .insurance-type img {
-    max-width: clamp(4rem, -6rem + 50vw, 6rem);
+    justify-content: start;
   }
 }
 
-@media (max-width: 20rem) {
-  .partners-logos {
-    margin-left: 1rem;
-    margin-right: 1rem;
+@media (max-width: 25rem) {
+  .insurance-types {
+    grid-template-columns: repeat(auto-fill, min(clamp(6rem, -2rem + 40vw, 8rem), 100%));
+    gap: clamp(1rem, -1rem + 10vw, 1.5rem);
+  }
+  .insurance-type img {
+    max-width: clamp(4rem, -4rem + 40vw, 6rem);
   }
 }
 
@@ -556,22 +579,15 @@ h3, h4, p {
 
 }
 
-@media (min-width: 60rem) {
-  .insurance {
-    margin-right: 0;
-  }
-  .insurance-types {
-    justify-content: start;
-  }
-}
-
 /* 1024px */
 @media (min-width: 64rem) {
   :root {
     --navbar-height: 5rem;
   }
-  main {
-    max-width: 64rem;
+  .container {
+    width: 64rem;
+    margin-left: auto;
+    margin-right: auto;
   }
   .navbar {
     padding-left: 1.875rem;
@@ -590,12 +606,24 @@ h3, h4, p {
   .offcanvas-button {
     display: none;
   }
-  .about {
-    max-width: 58rem;
+  .product-group {
+    flex-direction: row;
+    height: 15rem;
+  }
+  .product-group img {
+    width: 51vw;
+    height: 20rem;
+    flex-shrink: 0;
+    order: 1;
+    transform: translateY(-5rem);
+    clip-path: polygon(0 0, 100% 0%, 100% 100%, 12rem 100%);
+  }
+  .product-group p {
+    width: calc(50% - 1.5rem);
+    flex-shrink: 0;
   }
   .member {
     flex-direction: row;
-    max-width: 58rem;
   }
   .member-left {
     flex-shrink: 0;
@@ -615,12 +643,10 @@ h3, h4, p {
   :root {
     --navbar-height: 6rem;
   }
-  main {
-    max-width: 80rem;
-  }
   .container {
-    margin-left: 6rem;
-    margin-right: 6rem;
+    width: 80rem;
+    padding-left: 6rem;
+    padding-right: 6rem;
   }
   .navbar {
     padding-left: 3.75rem;
@@ -634,13 +660,15 @@ h3, h4, p {
     width: 12rem;
     font-size: 1.1rem;
   }
-  .insurance {
-    margin-right: 0;
-  }
   .about,
   .member {
-    margin-left: auto;
-    margin-right: auto;
+    width: 64rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+  .partners {
+    padding-left: 3rem;
+    padding-right: 3rem;
   }
   .team-members {
     grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
@@ -653,23 +681,23 @@ h3, h4, p {
   :root {
     --navbar-height: 7rem;
   }
-  main {
-    max-width: 96rem;
-  }
   .container {
-    margin-left: 7rem;
-    margin-right: 7rem;
+    width: 96rem;
+    padding-left: 7rem;
+    padding-right: 7rem;
   }
   .navbar-link {
     font-size: 1.1rem;
   }
-  .insurance {
-    margin-right: 0;
-  }
   .about,
   .member {
-    margin-left: auto;
-    margin-right: auto;
+    width: 64rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+  .partners {
+    padding-left: 3rem;
+    padding-right: 3rem;
   }
   .partners-logos {
     grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));

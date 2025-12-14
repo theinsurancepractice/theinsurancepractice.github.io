@@ -3,7 +3,7 @@ import eqInsuranceLogo from './assets/eq-insurance-logo.png'
 import libertyInsuranceLogo from './assets/liberty-insurance-logo.png'
 
 const Partners = () => (
-  <div className="partners">
+  <div className="partners container">
     <h2>Our Partners</h2>
     <div className="partners-logos">
       <img src={allianzLogo} alt="Allianz Logo" className="partners-logo" />

@@ -21,13 +21,26 @@ import Team from './Team.jsx'
 import TanTzeTingAleathea from './team/TanTzeTingAleathea.jsx'
 import './App.css'
 
+import FireAllRisk from './products/FireAllRisk.jsx'
+import BusinessPackages from './products/BusinessPackages.jsx'
+import ContractorAllRisk from './products/ContractorAllRisk.jsx'
+
 const FACEBOOK_URL = "https://www.facebook.com/"
 const INSTAGRAM_URL = "https://www.instagram.com/"
 const MIN_DESKTOP_WIDTH = 1024
 
 const App = () => {
   const location = useLocation()
-  const productsActive = ['/products/personal-insurance', '/products/corporate-insurance'].includes(location.pathname)
+  const personalInsuranceActive = [
+    '/products/personal-insurance'
+  ].includes(location.pathname)
+  const corporateInsuranceActive = [
+    '/products/corporate-insurance',
+    '/products/corporate-insurance/fire-all-risk',
+    '/products/corporate-insurance/business-packages',
+    '/products/corporate-insurance/contractor-all-risk'
+  ].includes(location.pathname)
+  const productsActive = personalInsuranceActive || corporateInsuranceActive
   const servicesActive = ['/services/existing-businesses', '/services/new-startups'].includes(location.pathname)
   const teamActive = ['/our-team/tan-tze-ting-aleathea'].includes(location.pathname)
   const [navbarProductsTriangleAngle, setNavbarProductsTriangleAngle] = useState(0)
@@ -82,6 +95,23 @@ const App = () => {
     return () => window.removeEventListener('resize', handleResizeOffcanvasServices)
   }, [showOffcanvasServices])
 
+  useEffect(() => {
+    const handleResize = () => {
+      const html = document.documentElement
+      const scrollbarActive = html.scrollHeight > html.clientHeight
+      const main = document.querySelector('main')
+      if (scrollbarActive) {
+        main.classList.remove('scrollbar-gutter')
+      } else {
+        main.classList.add('scrollbar-gutter')
+      }
+    }
+    const observer = new ResizeObserver(handleResize)
+    observer.observe(document.documentElement)
+    handleResize()
+    return () => observer.disconnect()
+  }, [])
+
   const showNavbarSublinksProducts = () => {
     const navbarSublinks = document.querySelector('.navbar-sublinks.products')
     navbarSublinks.style.maxHeight = navbarSublinks.scrollHeight + 'px'
@@ -107,13 +137,16 @@ const App = () => {
   }
 
   const handleShowOffcanvas = () => {
+    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth
     setShowOffcanvas(true)
     document.body.classList.add('no-scroll')
+    document.body.style.paddingRight = scrollbarWidth + 'px'
   }
   
   const handleCloseOffcanvas = () => {
     setShowOffcanvas(false)
     document.body.classList.remove('no-scroll')
+    document.body.style.paddingRight = ''
   }
 
   const handleToggleOffcanvasProducts = () => {
@@ -172,11 +205,11 @@ const App = () => {
             <TriangleSvg angle={navbarProductsTriangleAngle} color={"#238dc1"} />
             <div className="navbar-sublinks products">
               <div className="navbar-sublinks-border">
-                <NavLink to="/products/personal-insurance" end className="navbar-sublink">
+                <NavLink to="/products/personal-insurance" end className={`navbar-sublink ${personalInsuranceActive ? 'active' : ''}`}>
                   Personal Insurance
                 </NavLink>
                 <div className="navbar-sublink-divider"></div>
-                <NavLink to="/products/corporate-insurance" end className="navbar-sublink">
+                <NavLink to="/products/corporate-insurance" end className={`navbar-sublink ${corporateInsuranceActive ? 'active' : ''}`}>
                   Corporate Insurance
                 </NavLink>
               </div>
@@ -307,6 +340,9 @@ const App = () => {
           <Route path="about-us" element={<About />} />
           <Route path="products/personal-insurance" element={<PersonalInsurance />} />
           <Route path="products/corporate-insurance" element={<CorporateInsurance />} />
+          <Route path="products/corporate-insurance/fire-all-risk" element={<FireAllRisk />} />
+          <Route path="products/corporate-insurance/business-packages" element={<BusinessPackages />} />
+          <Route path="products/corporate-insurance/contractor-all-risk" element={<ContractorAllRisk />} />
           <Route path="our-team" element={<Team />} />
           <Route path="our-team/tan-tze-ting-aleathea" element={<TanTzeTingAleathea />} />
           <Route path="services/existing-businesses" element={<ExistingBusinesses />} />
