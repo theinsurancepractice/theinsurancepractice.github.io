@@ -1,4 +1,4 @@
-import { NavLink } from "react-router"
+import { NavLink } from 'react-router'
 import cartoonFire from './assets/cartoon-fire.png'
 import cartoonBusinessPackages from './assets/cartoon-business-packages.png'
 import cartoonContractor from './assets/cartoon-contractor.png'
@@ -43,114 +43,114 @@ const CorporateInsurance = () => (
           <img src={cartoonContractor} alt="Contractor All Risk" />
           <h4>Contractor <span>All Risk</span></h4>
         </NavLink>
-        <div className="insurance-type">
+        <NavLink to="/products/corporate-insurance/machinery-all-risk" end className="insurance-type">
           <img src={cartoonMachinery} alt="Machinery All Risk" />
           <h4>Machinery <span>All Risk</span></h4>
-        </div>
-        <div className="insurance-type">
+        </NavLink>
+        <NavLink to="/products/corporate-insurance/plate-glass" end className="insurance-type">
           <img src={cartoonPlateGlass} alt="Plate Glass" />
           <h4>Plate Glass</h4>
-        </div>
-        <div className="insurance-type">
+        </NavLink>
+        <NavLink to="/products/corporate-insurance/cyber-risk" end className="insurance-type">
           <img src={cartoonCyberRisk} alt="Cyber Risk" />
           <h4>Cyber Risk</h4>
-        </div>
-        <div className="insurance-type">
+        </NavLink>
+        <NavLink to="/products/corporate-insurance/directors-and-officers" end className="insurance-type">
           <img src={cartoonDirector} alt="Directors & Officers" />
           <h4>Directors & Officers</h4>
-        </div>
-        <div className="insurance-type">
+        </NavLink>
+        <NavLink to="/products/corporate-insurance/fidelity-guarantee" end className="insurance-type">
           <img src={cartoonFidelity} alt="Fidelity Guarantee" />
           <h4>Fidelity Guarantee</h4>
-        </div>
-        <div className="insurance-type">
+        </NavLink>
+        <NavLink to="/products/corporate-insurance/product-liability" end className="insurance-type">
           <img src={cartoonProductLiability} alt="Product Liability" />
           <h4>Product Liability</h4>
-        </div>
-        <div className="insurance-type">
+        </NavLink>
+        <NavLink to="/products/corporate-insurance/public-liability" end className="insurance-type">
           <img src={cartoonPublicLiability} alt="Public Liability" />
           <h4>Public Liability</h4>
-        </div>
-        <div className="insurance-type">
+        </NavLink>
+        <NavLink to="/products/corporate-insurance/professional-indemnity" end className="insurance-type">
           <img src={cartoonProfessionalIndemnity} alt="Professional Indemnity" />
           <h4>Professional Indemnity</h4>
-        </div>
-        <div className="insurance-type">
+        </NavLink>
+        <NavLink to="/products/corporate-insurance/workmen-compensation" end className="insurance-type">
           <img src={cartoonWorkmenCompensation} alt="Workmen Compensation" />
           <h4>Workmen Compensation</h4>
-        </div>
-        <div className="insurance-type">
+        </NavLink>
+        <NavLink to="/products/corporate-insurance/foreign-worker-medical" end className="insurance-type">
           <img src={cartoonForeignWorker} alt="Foreign Worker Medical" />
           <h4>Foreign Worker Medical</h4>
-        </div>
+        </NavLink>
       </div>
     </div>
     <div className="insurance-group">
       <h3>Bonds</h3>
       <div className="insurance-types">
-        <div className="insurance-type">
+        <NavLink to="/products/corporate-insurance/security-bond" end className="insurance-type">
           <img src={cartoonSecurityBond} alt="Security Bond" />
           <h4>Security Bond</h4>
-        </div>
-        <div className="insurance-type">
+        </NavLink>
+        <NavLink to="/products/corporate-insurance/performance-bond" end className="insurance-type">
           <img src={cartoonPerformanceBond} alt="Performance Bond" />
           <h4>Performance Bond</h4>
-        </div>
-        <div className="insurance-type">
+        </NavLink>
+        <NavLink to="/products/corporate-insurance/rental-bond" end className="insurance-type">
           <img src={cartoonRentalBond} alt="Rental Bond" />
           <h4>Rental Bond</h4>
-        </div>
-        <div className="insurance-type">
+        </NavLink>
+        <NavLink to="/products/corporate-insurance/undertaking-bond" end className="insurance-type">
           <img src={cartoonUndertakingBond} alt="Undertaking Bond" />
           <h4>Undertaking Bond</h4>
-        </div>
+        </NavLink>
       </div>
     </div>
     <div className="insurance-group">
       <h3>Staff Benefits</h3>
       <div className="insurance-types">
-        <div className="insurance-type">
+        <NavLink to="/products/corporate-insurance/employee-benefits" end className="insurance-type">
           <img src={cartoonEmployeeBenefits} alt="Employee Benefits" />
           <h4>Employee Benefits</h4>
-        </div>
-        <div className="insurance-type">
+        </NavLink>
+        <NavLink to="/products/corporate-insurance/corporate-travel" end className="insurance-type">
           <img src={cartoonCorporateTravel} alt="Corporate Travel" />
           <h4>Corporate Travel</h4>
-        </div>
-        <div className="insurance-type">
+        </NavLink>
+        <NavLink to="/products/corporate-insurance/medical-plans" end className="insurance-type">
           <img src={cartoonMedicalPlans} alt="Medical Plans" />
           <h4>Medical Plans</h4>
-        </div>
+        </NavLink>
       </div>
     </div>
     <div className="insurance-group">
       <h3>Motor</h3>
       <div className="insurance-types">
-        <div className="insurance-type">
+        <NavLink to="/products/corporate-insurance/commercial-motor-fleet" end className="insurance-type">
           <img src={cartoonCommercialMotor} alt="Commercial Motor Fleet" />
           <h4>Commercial <span>Motor Fleet</span></h4>
-        </div>
+        </NavLink>
       </div>
     </div>
     <div className="insurance-group">
       <h3>Marine</h3>
       <div className="insurance-types">
-        <div className="insurance-type">
+        <NavLink to="/products/corporate-insurance/marine-cargo" end className="insurance-type">
           <img src={cartoonMarineCargo} alt="Marine Cargo" />
           <h4>Marine Cargo</h4>
-        </div>
-        <div className="insurance-type">
+        </NavLink>
+        <NavLink to="/products/corporate-insurance/freight-forwarder" end className="insurance-type">
           <img src={cartoonFreightForwarder} alt="Freight Forwarder" />
           <h4>Freight Forwarder</h4>
-        </div>
-        <div className="insurance-type">
+        </NavLink>
+        <NavLink to="/products/corporate-insurance/inland-transit" end className="insurance-type">
           <img src={cartoonInlandTransit} alt="Inland Transit" />
           <h4>Inland Transit</h4>
-        </div>
-        <div className="insurance-type">
+        </NavLink>
+        <NavLink to="/products/corporate-insurance/warehouseman-liability" end className="insurance-type">
           <img src={cartoonWarehousemanLiability} alt="Warehouseman Liability" />
           <h4>Warehouseman Liability</h4>
-        </div>
+        </NavLink>
       </div>
     </div>
   </div>

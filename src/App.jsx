@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Routes, Route, NavLink, useLocation } from "react-router"
+import { Routes, Route, NavLink, useLocation } from 'react-router'
 import chatBubble from './assets/chat-bubble.png'
 import mapMarker from './assets/map-marker.png'
 import FacebookSvg from './svg/FacebookSvg.jsx'
@@ -21,9 +21,39 @@ import Team from './Team.jsx'
 import TanTzeTingAleathea from './team/TanTzeTingAleathea.jsx'
 import './App.css'
 
+import Travel from './products/Travel.jsx'
+import DomesticWorker from './products/DomesticWorker.jsx'
+import Golfer from './products/Golfer.jsx'
+import Pet from './products/Pet.jsx'
+import Fire from './products/Fire.jsx'
+import PersonalAccident from './products/PersonalAccident.jsx'
+import Motor from './products/Motor.jsx'
+
 import FireAllRisk from './products/FireAllRisk.jsx'
 import BusinessPackages from './products/BusinessPackages.jsx'
 import ContractorAllRisk from './products/ContractorAllRisk.jsx'
+import MachineryAllRisk from './products/MachineryAllRisk.jsx'
+import PlateGlass from './products/PlateGlass.jsx'
+import CyberRisk from './products/CyberRisk.jsx'
+import DirectorsAndOfficers from './products/DirectorsAndOfficers.jsx'
+import FidelityGuarantee from './products/FidelityGuarantee.jsx'
+import ProductLiability from './products/ProductLiability.jsx'
+import PublicLiability from './products/PublicLiability.jsx'
+import ProfessionalIndemnity from './products/ProfessionalIndemnity.jsx'
+import WorkmenCompensation from './products/WorkmenCompensation.jsx'
+import ForeignWorkerMedical from './products/ForeignWorkerMedical.jsx'
+import SecurityBond from './products/SecurityBond.jsx'
+import PerformanceBond from './products/PerformanceBond.jsx'
+import RentalBond from './products/RentalBond.jsx'
+import UndertakingBond from './products/UndertakingBond.jsx'
+import EmployeeBenefits from './products/EmployeeBenefits.jsx'
+import CorporateTravel from './products/CorporateTravel.jsx'
+import MedicalPlans from './products/MedicalPlans.jsx'
+import CommercialMotorFleet from './products/CommercialMotorFleet.jsx'
+import MarineCargo from './products/MarineCargo.jsx'
+import FreightForwarder from './products/FreightForwarder.jsx'
+import InlandTransit from './products/InlandTransit.jsx'
+import WarehousemanLiability from './products/WarehousemanLiability.jsx'
 
 const FACEBOOK_URL = "https://www.facebook.com/"
 const INSTAGRAM_URL = "https://www.instagram.com/"
@@ -32,13 +62,43 @@ const MIN_DESKTOP_WIDTH = 1024
 const App = () => {
   const location = useLocation()
   const personalInsuranceActive = [
-    '/products/personal-insurance'
+    '/products/personal-insurance',
+    '/products/personal-insurance/travel',
+    '/products/personal-insurance/domestic-worker',
+    '/products/personal-insurance/golfer',
+    '/products/personal-insurance/pet',
+    '/products/personal-insurance/fire',
+    '/products/personal-insurance/medical-plans',
+    '/products/personal-insurance/personal-accident',
+    '/products/personal-insurance/motor'
   ].includes(location.pathname)
   const corporateInsuranceActive = [
     '/products/corporate-insurance',
     '/products/corporate-insurance/fire-all-risk',
     '/products/corporate-insurance/business-packages',
-    '/products/corporate-insurance/contractor-all-risk'
+    '/products/corporate-insurance/contractor-all-risk',
+    '/products/corporate-insurance/machinery-all-risk',
+    '/products/corporate-insurance/plate-glass',
+    '/products/corporate-insurance/cyber-risk',
+    '/products/corporate-insurance/directors-and-officers',
+    '/products/corporate-insurance/fidelity-guarantee',
+    '/products/corporate-insurance/product-liability',
+    '/products/corporate-insurance/public-liability',
+    '/products/corporate-insurance/professional-indemnity',
+    '/products/corporate-insurance/workmen-compensation',
+    '/products/corporate-insurance/foreign-worker-medical',
+    '/products/corporate-insurance/security-bond',
+    '/products/corporate-insurance/performance-bond',
+    '/products/corporate-insurance/rental-bond',
+    '/products/corporate-insurance/undertaking-bond',
+    '/products/corporate-insurance/employee-benefits',
+    '/products/corporate-insurance/corporate-travel',
+    '/products/corporate-insurance/medical-plans',
+    '/products/corporate-insurance/commercial-motor-fleet',
+    '/products/corporate-insurance/marine-cargo',
+    '/products/corporate-insurance/freight-forwarder',
+    '/products/corporate-insurance/inland-transit',
+    '/products/corporate-insurance/warehouseman-liability'
   ].includes(location.pathname)
   const productsActive = personalInsuranceActive || corporateInsuranceActive
   const servicesActive = ['/services/existing-businesses', '/services/new-startups'].includes(location.pathname)
@@ -339,10 +399,40 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="about-us" element={<About />} />
           <Route path="products/personal-insurance" element={<PersonalInsurance />} />
+          <Route path="products/personal-insurance/travel" element={<Travel />} />
+          <Route path="products/personal-insurance/domestic-worker" element={<DomesticWorker />} />
+          <Route path="products/personal-insurance/golfer" element={<Golfer />} />
+          <Route path="products/personal-insurance/pet" element={<Pet />} />
+          <Route path="products/personal-insurance/fire" element={<Fire />} />
+          <Route path="products/personal-insurance/medical-plans" element={<MedicalPlans />} />
+          <Route path="products/personal-insurance/personal-accident" element={<PersonalAccident />} />
+          <Route path="products/personal-insurance/motor" element={<Motor />} />
           <Route path="products/corporate-insurance" element={<CorporateInsurance />} />
           <Route path="products/corporate-insurance/fire-all-risk" element={<FireAllRisk />} />
           <Route path="products/corporate-insurance/business-packages" element={<BusinessPackages />} />
           <Route path="products/corporate-insurance/contractor-all-risk" element={<ContractorAllRisk />} />
+          <Route path="products/corporate-insurance/machinery-all-risk" element={<MachineryAllRisk />} />
+          <Route path="products/corporate-insurance/plate-glass" element={<PlateGlass />} />
+          <Route path="products/corporate-insurance/cyber-risk" element={<CyberRisk />} />
+          <Route path="products/corporate-insurance/directors-and-officers" element={<DirectorsAndOfficers />} />
+          <Route path="products/corporate-insurance/fidelity-guarantee" element={<FidelityGuarantee />} />
+          <Route path="products/corporate-insurance/product-liability" element={<ProductLiability />} />
+          <Route path="products/corporate-insurance/public-liability" element={<PublicLiability />} />
+          <Route path="products/corporate-insurance/professional-indemnity" element={<ProfessionalIndemnity />} />
+          <Route path="products/corporate-insurance/workmen-compensation" element={<WorkmenCompensation />} />
+          <Route path="products/corporate-insurance/foreign-worker-medical" element={<ForeignWorkerMedical />} />
+          <Route path="products/corporate-insurance/security-bond" element={<SecurityBond />} />
+          <Route path="products/corporate-insurance/performance-bond" element={<PerformanceBond />} />
+          <Route path="products/corporate-insurance/rental-bond" element={<RentalBond />} />
+          <Route path="products/corporate-insurance/undertaking-bond" element={<UndertakingBond />} />
+          <Route path="products/corporate-insurance/employee-benefits" element={<EmployeeBenefits />} />
+          <Route path="products/corporate-insurance/corporate-travel" element={<CorporateTravel />} />
+          <Route path="products/corporate-insurance/medical-plans" element={<MedicalPlans />} />
+          <Route path="products/corporate-insurance/commercial-motor-fleet" element={<CommercialMotorFleet />} />
+          <Route path="products/corporate-insurance/marine-cargo" element={<MarineCargo />} />
+          <Route path="products/corporate-insurance/freight-forwarder" element={<FreightForwarder />} />
+          <Route path="products/corporate-insurance/inland-transit" element={<InlandTransit />} />
+          <Route path="products/corporate-insurance/warehouseman-liability" element={<WarehousemanLiability />} />
           <Route path="our-team" element={<Team />} />
           <Route path="our-team/tan-tze-ting-aleathea" element={<TanTzeTingAleathea />} />
           <Route path="services/existing-businesses" element={<ExistingBusinesses />} />

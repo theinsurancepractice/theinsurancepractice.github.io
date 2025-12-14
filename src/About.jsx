@@ -4,7 +4,7 @@ const About = () => (
     <div className="about-sections">
       <section className="about-section">
         <h3>History</h3>
-        <p>Our journey began in January 2017 as a humble one-man insurance agency, built on the vision of providing clients with trusted advice and reliable protection. Over the years, the business grew steadily, and today we are proud to have close to 30 dedicated nominee agents serving a wide and diverse client base. In 2026, we achieved a key milestone by transitioning into a licensed insurance broker. This move expanded the range of insurer brands we represent, allowing us to offer clients even greater flexibility, choice, and value in meeting their insurance needs</p>
+        <p>Our journey began in January 2017 as a humble one-man insurance agency, built on the vision of providing clients with trusted advice and reliable protection. Over the years, the business grew steadily, and today we are proud to have close to 30 dedicated nominee agents serving a wide and diverse client base. In 2026, we achieved a key milestone by transitioning into a licensed insurance broker. This move expanded the range of insurer brands we represent, allowing us to offer clients even greater flexibility, choice, and value in meeting their insurance needs.</p>
       </section>
       <section className="about-section">
         <h3>Vision</h3>
