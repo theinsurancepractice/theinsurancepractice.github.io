@@ -14,7 +14,7 @@ import CorporateInsurance from './CorporateInsurance.jsx'
 import Contact from './Contact.jsx'
 import ExistingBusinesses from './ExistingBusinesses.jsx'
 import Home from './Home.jsx'
-import NewStartups from './NewStartups.jsx'
+import NewBusinesses from './NewBusinesses.jsx'
 import Partners from './Partners.jsx'
 import PersonalInsurance from './PersonalInsurance.jsx'
 import Team from './Team.jsx'
@@ -101,7 +101,7 @@ const App = () => {
     '/products/corporate-insurance/warehouseman-liability'
   ].includes(location.pathname)
   const productsActive = personalInsuranceActive || corporateInsuranceActive
-  const servicesActive = ['/services/existing-businesses', '/services/new-startups'].includes(location.pathname)
+  const servicesActive = ['/services/existing-businesses', '/services/new-businesses'].includes(location.pathname)
   const teamActive = ['/our-team/tan-tze-ting-aleathea'].includes(location.pathname)
   const [navbarProductsTriangleAngle, setNavbarProductsTriangleAngle] = useState(0)
   const [navbarServicesTriangleAngle, setNavbarServicesTriangleAngle] = useState(0)
@@ -293,8 +293,8 @@ const App = () => {
                   Existing Businesses
                 </NavLink>
                 <div className="navbar-sublink-divider"></div>
-                <NavLink to="/services/new-startups" end className="navbar-sublink">
-                  New Startups
+                <NavLink to="/services/new-businesses" end className="navbar-sublink">
+                  New Businesses
                 </NavLink>
               </div>
             </div>
@@ -359,8 +359,8 @@ const App = () => {
               <NavLink to="/services/existing-businesses" end onClick={handleCloseOffcanvas} tabIndex={offcanvasTabIndex} className="offcanvas-sublink">
                 Existing Businesses
               </NavLink>
-              <NavLink to="/services/new-startups" end onClick={handleCloseOffcanvas} tabIndex={offcanvasTabIndex} className="offcanvas-sublink">
-                New Startups
+              <NavLink to="/services/new-businesses" end onClick={handleCloseOffcanvas} tabIndex={offcanvasTabIndex} className="offcanvas-sublink">
+                New Businesses
               </NavLink>
             </div>
             <div onClick={showOffcanvasServices ? undefined : handleToggleOffcanvasServices} className={`offcanvas-link-bottom ${showOffcanvasServices ? 'show' : ''}`}></div>
@@ -436,7 +436,7 @@ const App = () => {
           <Route path="our-team" element={<Team />} />
           <Route path="our-team/tan-tze-ting-aleathea" element={<TanTzeTingAleathea />} />
           <Route path="services/existing-businesses" element={<ExistingBusinesses />} />
-          <Route path="services/new-startups" element={<NewStartups />} />
+          <Route path="services/new-businesses" element={<NewBusinesses />} />
           <Route path="our-partners" element={<Partners />} />
           <Route path="careers" element={<Careers />} />
           <Route path="activities" element={<Activities />} />

@@ -27,9 +27,13 @@ h3 {
   font-size: 1.2rem;
 }
 
-h3, h4, p {
+h3, h4, p, ul {
   margin-block-start: 0;
   margin-block-end: 0;
+}
+
+ul {
+  padding-inline-start: 2.5rem;
 }
 
 .container {
@@ -370,13 +374,15 @@ h3, h4, p {
   margin-left: 0.7rem;
 }
 
-.about-sections {
+.about-sections,
+.service-sections {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
 }
 
-.about-section h3 {
+.about-section h3,
+.service-section h3 {
   color: var(--theme-color);
 }
 
@@ -661,7 +667,8 @@ h3, h4, p {
     font-size: 1.1rem;
   }
   .about,
-  .member {
+  .member,
+  .service {
     width: 64rem;
     padding-left: 3rem;
     padding-right: 3rem;
@@ -690,7 +697,8 @@ h3, h4, p {
     font-size: 1.1rem;
   }
   .about,
-  .member {
+  .member,
+  .service {
     width: 64rem;
     padding-left: 3rem;
     padding-right: 3rem;
