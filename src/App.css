@@ -72,7 +72,6 @@ ul {
 .navbar-left {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
 }
 
 .navbar-link {
@@ -93,6 +92,14 @@ ul {
 
 .navbar-link.active {
   color: var(--theme-color);
+}
+
+.navbar-link-logo {
+  display: flex;
+}
+
+.navbar-logo {
+  height: calc(var(--navbar-height) - 1rem);
 }
 
 .navbar-sublinks {
@@ -301,6 +308,11 @@ ul {
 
 .offcanvas-link-bottom.show:hover {
   cursor: auto;
+}
+
+.offcanvas-logo {
+  max-height: 5rem;
+  max-width: 100%;
 }
 
 .offcanvas-sublinks {
@@ -765,6 +777,9 @@ ul {
 }
 
 @media (max-width: 20.5rem) {
+  .navbar-link-logo {
+    display: none;
+  }
   .insurance-types {
     grid-template-columns: repeat(auto-fill, min(clamp(6rem, -1.1111rem + 44.4444vw, 8rem), 100%));
     gap: clamp(1rem, -0.7778rem + 11.1111vw, 1.5rem);
@@ -818,8 +833,11 @@ ul {
     margin-right: auto;
   }
   .navbar {
-    padding-left: 1.875rem;
-    padding-right: calc(1.875rem - 100vw + 100%);
+    padding-left: 1.5rem;
+    padding-right: calc(1.5rem - 100vw + 100%);
+  }
+  .navbar-left {
+    gap: 1.25rem;
   }
   .navbar-link {
     display: flex;
@@ -897,6 +915,9 @@ ul {
     padding-left: 3.75rem;
     padding-right: calc(3.75rem - 100vw + 100%);
   }
+  .navbar-left {
+    gap: 1.5rem;
+  }
   .navbar-link {
     font-size: 1rem;
   }
@@ -941,6 +962,9 @@ ul {
     width: 96rem;
     padding-left: 7rem;
     padding-right: 7rem;
+  }
+  .navbar-left {
+    gap: 2rem;
   }
   .navbar-link {
     font-size: 1.1rem;

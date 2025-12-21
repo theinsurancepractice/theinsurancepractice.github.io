@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
 import { Routes, Route, NavLink, useLocation } from 'react-router'
 import chatBubble from './assets/chat-bubble.png'
+import logoWhiteBg from './assets/logo-white-bg.png'
+import logoBlueBg from './assets/logo-blue-bg.png'
 import mapMarker from './assets/map-marker.png'
 import FacebookSvg from './svg/FacebookSvg.jsx'
 import HamburgerSvg from './svg/HamburgerSvg.jsx'
@@ -249,6 +251,9 @@ const App = () => {
           <div className="offcanvas-button" onClick={handleShowOffcanvas}>
             <HamburgerSvg />
           </div>
+          <NavLink to="/" end className="navbar-link navbar-link-logo">
+            <img src={logoWhiteBg} alt="The Insurance Practice Logo" className="navbar-logo" />
+          </NavLink>
           <NavLink to="/" end className="navbar-link">
             Home
           </NavLink>
@@ -326,6 +331,9 @@ const App = () => {
       <nav className={`offcanvas ${showOffcanvas ? 'show' : ''}`}>
         <div className="offcanvas-left">
           <div>
+            <NavLink to="/" end onClick={handleCloseOffcanvas} tabIndex={offcanvasTabIndex} className="offcanvas-link">
+              <img src={logoBlueBg} alt="The Insurance Practice Logo" className="offcanvas-logo" />
+            </NavLink>
             <NavLink to="/" end onClick={handleCloseOffcanvas} tabIndex={offcanvasTabIndex} className="offcanvas-link">
               Home
             </NavLink>
