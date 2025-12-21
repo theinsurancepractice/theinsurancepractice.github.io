@@ -15,6 +15,7 @@ import Contact from './Contact.jsx'
 import ExistingBusinesses from './ExistingBusinesses.jsx'
 import Home from './Home.jsx'
 import NewBusinesses from './NewBusinesses.jsx'
+import NotFound from './NotFound.jsx'
 import Partners from './Partners.jsx'
 import PersonalInsurance from './PersonalInsurance.jsx'
 import Team from './Team.jsx'
@@ -441,7 +442,7 @@ const App = () => {
           <Route path="careers" element={<Careers />} />
           <Route path="activities" element={<Activities />} />
           <Route path="contact-us" element={<Contact />} />
-          <Route path="*" element={<Home />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
     </>
