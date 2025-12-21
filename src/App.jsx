@@ -262,7 +262,7 @@ const App = () => {
             className={`navbar-link ${productsActive ? 'active' : ''}`}
           >
             Products
-            <TriangleSvg angle={navbarProductsTriangleAngle} color={"#238dc1"} />
+            <TriangleSvg angle={navbarProductsTriangleAngle} color="#238dc1" />
             <div className="navbar-sublinks products">
               <div className="navbar-sublinks-border">
                 <NavLink to="/products/personal-insurance" end className={`navbar-sublink ${personalInsuranceActive ? 'active' : ''}`}>
@@ -286,7 +286,7 @@ const App = () => {
             className={`navbar-link ${servicesActive ? 'active' : ''}`}
           >
             Services
-            <TriangleSvg angle={navbarServicesTriangleAngle} color={"#238dc1"} />
+            <TriangleSvg angle={navbarServicesTriangleAngle} color="#238dc1" />
             <div className="navbar-sublinks services">
               <div className="navbar-sublinks-border">
                 <NavLink to="/services/existing-businesses" end className="navbar-sublink">
@@ -335,7 +335,7 @@ const App = () => {
             <div className="offcanvas-divider"></div>
             <div onClick={handleToggleOffcanvasProducts} className={`offcanvas-link top ${showOffcanvasProducts ? 'show' : ''}`}>
               Products
-              <TriangleSvg angle={showOffcanvasProducts ? 180 : 0} color={"white"} />
+              <TriangleSvg angle={showOffcanvasProducts ? 180 : 0} color="white" />
             </div>
             <div className={`offcanvas-sublinks products ${offcanvasProductsTransition ? 'transition' : ''}`}>
               <NavLink to="/products/personal-insurance" end onClick={handleCloseOffcanvas} tabIndex={offcanvasTabIndex} className="offcanvas-sublink">
@@ -353,7 +353,7 @@ const App = () => {
             <div className="offcanvas-divider"></div>
             <div onClick={handleToggleOffcanvasServices} className={`offcanvas-link top ${showOffcanvasServices ? 'show' : ''}`}>
               Services
-              <TriangleSvg angle={showOffcanvasServices ? 180 : 0} color={"white"} />
+              <TriangleSvg angle={showOffcanvasServices ? 180 : 0} color="white" />
             </div>
             <div className={`offcanvas-sublinks services ${offcanvasServicesTransition ? 'transition' : ''}`}>
               <NavLink to="/services/existing-businesses" end onClick={handleCloseOffcanvas} tabIndex={offcanvasTabIndex} className="offcanvas-sublink">
