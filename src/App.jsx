@@ -163,10 +163,13 @@ const App = () => {
       const html = document.documentElement
       const scrollbarActive = html.scrollHeight > html.clientHeight
       const main = document.querySelector('main')
+      const footer = document.querySelector('footer')
       if (scrollbarActive) {
         main.classList.remove('scrollbar-gutter')
+        footer.classList.remove('scrollbar-gutter')
       } else {
         main.classList.add('scrollbar-gutter')
+        footer.classList.add('scrollbar-gutter')
       }
     }
     const observer = new ResizeObserver(handleResize)
@@ -388,10 +391,10 @@ const App = () => {
           </div>
           <div className="offcanvas-socials">
             <a href={FACEBOOK_URL} target="_blank" rel="noopener noreferrer" tabIndex={offcanvasTabIndex}>
-              <FacebookSvg width="1.4rem" height="1.4rem" color="white" />
+              <FacebookSvg />
             </a>
             <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" tabIndex={offcanvasTabIndex} className="offcanvas-icon">
-              <InstagramSvg width="1.4rem" height="1.4rem" color="white" />
+              <InstagramSvg />
             </a>
           </div>
         </div>
@@ -453,6 +456,22 @@ const App = () => {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
+
+      <footer>
+        <div className="footer-container container">
+          <NavLink to="/" end className="footer-link">
+            <img src={logoBlueBg} alt="The Insurance Practice Logo" className="footer-logo" />
+          </NavLink>
+          <div className="footer-socials">
+            <a href={FACEBOOK_URL} target="_blank" rel="noopener noreferrer" className="footer-icon">
+              <FacebookSvg />
+            </a>
+            <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="footer-icon">
+              <InstagramSvg />
+            </a>
+          </div>
+        </div>
+      </footer>
     </>
   )
 }

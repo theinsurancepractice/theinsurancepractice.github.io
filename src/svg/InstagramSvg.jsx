@@ -1,5 +1,5 @@
-const InstagramIcon = ({ width, height, color }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width={width} height={height} fill={color} viewBox="0 0 30 30">
+const InstagramIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
     <path d="
       M19.017 7.32182
       H11.037
