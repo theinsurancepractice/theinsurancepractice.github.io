@@ -10,8 +10,8 @@ import InstagramSvg from './svg/InstagramSvg.jsx'
 import TriangleSvg from './svg/TriangleSvg.jsx'
 import XSvg from './svg/XSvg.jsx'
 import About from './About.jsx'
-import Activities from './Activities.jsx'
-import Careers from './Careers.jsx'
+import AdministrativeStaff from './AdministrativeStaff.jsx'
+import BrokingStaff from './BrokingStaff.jsx'
 import CorporateInsurance from './CorporateInsurance.jsx'
 import Contact from './Contact.jsx'
 import ExistingBusinesses from './ExistingBusinesses.jsx'
@@ -21,6 +21,7 @@ import NotFound from './NotFound.jsx'
 import Partners from './Partners.jsx'
 import PersonalInsurance from './PersonalInsurance.jsx'
 import Team from './Team.jsx'
+import Workshop from './Workshop.jsx'
 import TanTzeTingAleathea from './team/TanTzeTingAleathea.jsx'
 import './App.css'
 
@@ -106,14 +107,18 @@ const App = () => {
   const productsActive = personalInsuranceActive || corporateInsuranceActive
   const servicesActive = ['/services/existing-businesses', '/services/new-businesses'].includes(location.pathname)
   const teamActive = ['/our-team/tan-tze-ting-aleathea'].includes(location.pathname)
+  const careersActive = ['/careers/broking-staff', '/careers/administrative-staff'].includes(location.pathname)
   const [navbarProductsTriangleAngle, setNavbarProductsTriangleAngle] = useState(0)
   const [navbarServicesTriangleAngle, setNavbarServicesTriangleAngle] = useState(0)
+  const [navbarCareersTriangleAngle, setNavbarCareersTriangleAngle] = useState(0)
   
   const [showOffcanvas, setShowOffcanvas] = useState(false)                              // Show or hide offcanvas
   const [showOffcanvasProducts, setShowOffcanvasProducts] = useState(false)              // Show or hide offcanvas products
   const [offcanvasProductsTransition, setOffcanvasProductsTransition] = useState(false)  // Turn on or off transition for offcanvas products
   const [showOffcanvasServices, setShowOffcanvasServices] = useState(false)              // Show or hide offcanvas services
   const [offcanvasServicesTransition, setOffcanvasServicesTransition] = useState(false)  // Turn on or off transition for offcanvas services
+  const [showOffcanvasCareers, setShowOffcanvasCareers] = useState(false)                // Show or hide offcanvas careers
+  const [offcanvasCareersTransition, setOffcanvasCareersTransition] = useState(false)    // Turn on or off transition for offcanvas careers
   const [offcanvasTabIndex, setOffcanvasTabIndex] = useState(0)                          // Set to -1 to disable keyboard navigation when vw >= 1024px
   
   // Close offcanvas when location changes
@@ -159,6 +164,17 @@ const App = () => {
   }, [showOffcanvasServices])
 
   useEffect(() => {
+    const handleResizeOffcanvasCareers = () => {
+      const offcanvasSublinks = document.querySelector('.offcanvas-sublinks.careers')
+      if (showOffcanvasCareers) {
+        offcanvasSublinks.style.maxHeight = offcanvasSublinks.scrollHeight + 'px'
+      }
+    }
+    window.addEventListener('resize', handleResizeOffcanvasCareers)
+    return () => window.removeEventListener('resize', handleResizeOffcanvasCareers)
+  }, [showOffcanvasCareers])
+
+  useEffect(() => {
     const handleResize = () => {
       const html = document.documentElement
       const scrollbarActive = html.scrollHeight > html.clientHeight
@@ -200,6 +216,18 @@ const App = () => {
     const navbarSublinks = document.querySelector('.navbar-sublinks.services')
     navbarSublinks.style.maxHeight = '0px'
     setNavbarServicesTriangleAngle(0)
+  }
+
+  const showNavbarSublinksCareers = () => {
+    const navbarSublinks = document.querySelector('.navbar-sublinks.careers')
+    navbarSublinks.style.maxHeight = navbarSublinks.scrollHeight + 'px'
+    setNavbarCareersTriangleAngle(180)
+  }
+
+  const hideNavbarSublinksCareers = () => {
+    const navbarSublinks = document.querySelector('.navbar-sublinks.careers')
+    navbarSublinks.style.maxHeight = '0px'
+    setNavbarCareersTriangleAngle(0)
   }
 
   const handleShowOffcanvas = () => {
@@ -245,6 +273,22 @@ const App = () => {
     }
     setOffcanvasServicesTransition(true)
     setShowOffcanvasServices(!showOffcanvasServices)
+  }
+
+  const handleToggleOffcanvasCareers = () => {
+    const offcanvasSublinks = document.querySelector('.offcanvas-sublinks.careers')
+    const handleTransitionEnd = () => {
+      offcanvasSublinks.removeEventListener('transitionend', handleTransitionEnd)
+      setOffcanvasCareersTransition(false)
+    }
+    offcanvasSublinks.addEventListener('transitionend', handleTransitionEnd)
+    if (showOffcanvasCareers) {
+      offcanvasSublinks.style.maxHeight = '0px'
+    } else {
+      offcanvasSublinks.style.maxHeight = offcanvasSublinks.scrollHeight + 'px'
+    }
+    setOffcanvasCareersTransition(true)
+    setShowOffcanvasCareers(!showOffcanvasCareers)
   }
 
   return (
@@ -311,11 +355,29 @@ const App = () => {
           <NavLink to="/our-partners" end className="navbar-link">
             Our Partners
           </NavLink>
-          <NavLink to="/careers" end className="navbar-link">
+          <div
+            onMouseEnter={showNavbarSublinksCareers}
+            onFocus={showNavbarSublinksCareers}
+            onMouseLeave={hideNavbarSublinksCareers}
+            onBlur={hideNavbarSublinksCareers}
+            className={`navbar-link ${careersActive ? 'active' : ''}`}
+          >
             Careers
-          </NavLink>
-          <NavLink to="/activities" end className="navbar-link">
-            Activities
+            <TriangleSvg angle={navbarCareersTriangleAngle} color="#238dc1" />
+            <div className="navbar-sublinks careers">
+              <div className="navbar-sublinks-border">
+                <NavLink to="/careers/broking-staff" end className="navbar-sublink">
+                  Broking Staff
+                </NavLink>
+                <div className="navbar-sublink-divider"></div>
+                <NavLink to="/careers/administrative-staff" end className="navbar-sublink">
+                  Administrative Staff
+                </NavLink>
+              </div>
+            </div>
+          </div>
+          <NavLink to="/workshop" end className="navbar-link">
+            Workshop
           </NavLink>
         </div>
         <div className="navbar-right">
@@ -381,12 +443,22 @@ const App = () => {
               Our Partners
             </NavLink>
             <div className="offcanvas-divider"></div>
-            <NavLink to="/careers" end onClick={handleCloseOffcanvas} tabIndex={offcanvasTabIndex} className="offcanvas-link">
+            <div onClick={handleToggleOffcanvasCareers} className={`offcanvas-link top ${showOffcanvasCareers ? 'show' : ''}`}>
               Careers
-            </NavLink>
+              <TriangleSvg angle={showOffcanvasCareers ? 180 : 0} color="white" />
+            </div>
+            <div className={`offcanvas-sublinks careers ${offcanvasCareersTransition ? 'transition' : ''}`}>
+              <NavLink to="/careers/broking-staff" end onClick={handleCloseOffcanvas} tabIndex={offcanvasTabIndex} className="offcanvas-sublink">
+                Broking Staff
+              </NavLink>
+              <NavLink to="/careers/administrative-staff" end onClick={handleCloseOffcanvas} tabIndex={offcanvasTabIndex} className="offcanvas-sublink">
+                Administrative Staff
+              </NavLink>
+            </div>
+            <div onClick={showOffcanvasCareers ? undefined : handleToggleOffcanvasCareers} className={`offcanvas-link-bottom ${showOffcanvasCareers ? 'show' : ''}`}></div>
             <div className="offcanvas-divider"></div>
-            <NavLink to="/activities" end onClick={handleCloseOffcanvas} tabIndex={offcanvasTabIndex} className="offcanvas-link">
-              Activities
+            <NavLink to="/workshop" end onClick={handleCloseOffcanvas} tabIndex={offcanvasTabIndex} className="offcanvas-link">
+              Workshop
             </NavLink>
           </div>
           <div className="offcanvas-socials">
@@ -450,14 +522,15 @@ const App = () => {
           <Route path="services/existing-businesses" element={<ExistingBusinesses />} />
           <Route path="services/new-businesses" element={<NewBusinesses />} />
           <Route path="our-partners" element={<Partners />} />
-          <Route path="careers" element={<Careers />} />
-          <Route path="activities" element={<Activities />} />
+          <Route path="careers/broking-staff" element={<BrokingStaff />} />
+          <Route path="careers/administrative-staff" element={<AdministrativeStaff />} />
+          <Route path="workshop" element={<Workshop />} />
           <Route path="contact-us" element={<Contact />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
 
-      <footer>
+      <footer className="footer">
         <div className="footer-container container">
           <NavLink to="/" end className="footer-link">
             <img src={logoBlueBg} alt="The Insurance Practice Logo" className="footer-logo" />
