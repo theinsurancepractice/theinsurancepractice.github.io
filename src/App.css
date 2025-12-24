@@ -339,7 +339,7 @@ blockquote {
 }
 
 .offcanvas-logo {
-  max-height: 5rem;
+  max-height: clamp(5rem, 2.5rem + 6.25vw, 5.5rem);
   max-width: 100%;
 }
 
