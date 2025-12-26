@@ -1,4 +1,4 @@
-const InstagramIcon = () => (
+const InstagramSvg = () => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
     <path d="
       M19.017 7.32182
@@ -49,4 +49,4 @@ const InstagramIcon = () => (
   </svg>
 )
 
-export default InstagramIcon
+export default InstagramSvg

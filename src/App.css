@@ -41,8 +41,6 @@ main.scrollbar-gutter,
   width: 100%;
   min-height: 8rem;
   background-color: var(--theme-color);
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
   overflow-x: hidden;
   overflow-y: auto;
 }
@@ -409,22 +407,22 @@ blockquote {
 }
 
 .offcanvas-socials {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.7rem;
+  flex-wrap: wrap;
   margin-top: auto;
-  padding-bottom: 1.875rem;
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
-  text-align: right;
-  line-height: 2;
-}
-
-.offcanvas-socials svg {
-  width: 1.4rem;
-  height: 1.4rem;
-  fill: white;
+  padding: 1.25rem 1.25rem 2rem;
 }
 
 .offcanvas-icon {
-  margin-left: 0.7rem;
+  display: flex;
+}
+
+.offcanvas-icon svg {
+  width: 1.8rem;
+  height: 1.8rem;
+  fill: white;
 }
 
 .footer-container {
@@ -450,11 +448,15 @@ blockquote {
   justify-content: flex-end;
   gap: 0.7rem;
   flex-wrap: wrap;
+  flex-basis: 2rem;
+  flex-grow: 1;
 }
 
 .footer-icon svg {
-  width: 2rem;
-  height: 2rem;
+  max-width: 2rem;
+  max-height: 2rem;
+  width: 100%;
+  height: 100%;
   fill: white;
 }
 
@@ -1048,6 +1050,16 @@ blockquote {
   .contact-method-header svg {
     display: inline;
   }
+  .workshop-section {
+    padding-left: 2.5rem;
+  }
+  .workshop-bar span {
+    display: inline;
+  }
+  .workshop-line,
+  .workshop-circle {
+    display: none;
+  }
 }
 
 @media (max-width: 20.5rem) {
@@ -1060,26 +1072,6 @@ blockquote {
   }
   .insurance-type img {
     max-width: clamp(4rem, -3.1111rem + 44.4444vw, 6rem);
-  }
-}
-
-@media (max-width: 18.5rem) {
-  .footer-socials {
-    flex-basis: 2rem;
-  }
-  .footer-icon svg {
-    width: 100%;
-    height: 100%;
-  }
-  .workshop-section {
-    padding-left: 2.5rem;
-  }
-  .workshop-bar span {
-    display: inline;
-  }
-  .workshop-line,
-  .workshop-circle {
-    display: none;
   }
 }
 
@@ -1231,8 +1223,7 @@ blockquote {
     font-size: 1.1rem;
   }
   .footer {
-    padding-top: 2rem;
-    padding-bottom: 2rem;
+    min-height: 10rem;
   }
   .footer-logo {
     max-height: 6rem;

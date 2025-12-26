@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Routes, Route, NavLink, useLocation } from 'react-router'
-import { FACEBOOK_URL, INSTAGRAM_URL, MIN_DESKTOP_WIDTH } from './constants'
+import { FACEBOOK_URL, INSTAGRAM_URL, LINKEDIN_URL, MIN_DESKTOP_WIDTH } from './constants'
 import chatBubble from './assets/chat-bubble.png'
 import logoWhiteBg from './assets/logo-white-bg.png'
 import logoBlueBg from './assets/logo-blue-bg.png'
@@ -8,6 +8,7 @@ import mapMarker from './assets/map-marker.png'
 import FacebookSvg from './svg/FacebookSvg.jsx'
 import HamburgerSvg from './svg/HamburgerSvg.jsx'
 import InstagramSvg from './svg/InstagramSvg.jsx'
+import LinkedInSvg from './svg/LinkedInSvg.jsx'
 import TriangleSvg from './svg/TriangleSvg.jsx'
 import XSvg from './svg/XSvg.jsx'
 import About from './About.jsx'
@@ -459,11 +460,14 @@ const App = () => {
             </NavLink>
           </div>
           <div className="offcanvas-socials">
-            <a href={FACEBOOK_URL} target="_blank" rel="noopener noreferrer" tabIndex={offcanvasTabIndex}>
+            <a href={FACEBOOK_URL} target="_blank" rel="noopener noreferrer" tabIndex={offcanvasTabIndex} className="offcanvas-icon">
               <FacebookSvg />
             </a>
             <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" tabIndex={offcanvasTabIndex} className="offcanvas-icon">
               <InstagramSvg />
+            </a>
+            <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" tabIndex={offcanvasTabIndex} className="offcanvas-icon">
+              <LinkedInSvg />
             </a>
           </div>
         </div>
@@ -538,6 +542,9 @@ const App = () => {
             </a>
             <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="footer-icon">
               <InstagramSvg />
+            </a>
+            <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" className="footer-icon">
+              <LinkedInSvg />
             </a>
           </div>
         </div>
