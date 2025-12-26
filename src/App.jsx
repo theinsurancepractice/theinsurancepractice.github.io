@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react'
 import { Routes, Route, NavLink, useLocation } from 'react-router'
 import { FACEBOOK_URL, INSTAGRAM_URL, LINKEDIN_URL, MIN_DESKTOP_WIDTH } from './constants'
-import chatBubble from './assets/chat-bubble.png'
 import logoWhiteBg from './assets/logo-white-bg.png'
 import logoBlueBg from './assets/logo-blue-bg.png'
 import mapMarker from './assets/map-marker.png'
+import ChatBubbleSvg from './svg/ChatBubbleSvg.jsx'
 import FacebookSvg from './svg/FacebookSvg.jsx'
 import HamburgerSvg from './svg/HamburgerSvg.jsx'
 import InstagramSvg from './svg/InstagramSvg.jsx'
@@ -381,7 +381,7 @@ const App = () => {
         <div className="navbar-right">
           <NavLink to="/contact-us" end className="navbar-contact">
             Contact Us
-            <img src={chatBubble} alt="Chat Bubble" className="chat-bubble" />
+            <ChatBubbleSvg />
           </NavLink>
           {/* <div className="navbar-location">
             <img src={mapMarker} alt="Map Marker" className="map-marker" />
