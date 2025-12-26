@@ -21,9 +21,12 @@ main {
 }
 
 main:has(> .home) {
-  position: relative;
   padding-top: 0;
   padding-bottom: 0;
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.95) var(--home-height), transparent), url('./assets/administrative-staff.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 main:has(> .contact) {
@@ -459,23 +462,6 @@ blockquote {
   width: 100%;
   height: 100%;
   fill: white;
-}
-
-.home-image {
-  position: absolute;
-  top: 0;
-  width: 100vw;
-  height: 100%;
-  object-fit: cover;
-  z-index: -2;
-}
-
-.home-image-background {
-  position: absolute;
-  top: 0;
-  width: 100vw;
-  height: 100%;
-  z-index: -1;
 }
 
 .home {
@@ -1116,6 +1102,9 @@ blockquote {
 @media (min-width: 64rem) {
   :root {
     --navbar-height: 5rem;
+  }
+  main:has(> .home) {
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.95) 50%, transparent), url('./assets/administrative-staff.jpg');
   }
   .container {
     width: 64rem;

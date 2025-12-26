@@ -1,35 +1,30 @@
 import { useEffect, useRef } from 'react'
 import { NavLink } from 'react-router'
 import { MIN_DESKTOP_WIDTH } from './constants'
-import img from  './assets/administrative-staff.jpg'
 import TriangleSvg from './svg/TriangleSvg'
 
 const Home = () => {
   const homeRef = useRef(null)
-  const homeImageBackgroundRef = useRef(null)
 
   useEffect(() => {
     const observer = new ResizeObserver(entries => {
-      const entry = entries[0]
-      if (homeImageBackgroundRef.current) {
-        if (window.innerWidth < MIN_DESKTOP_WIDTH) {
-          const height = entry.borderBoxSize[0].blockSize
-          homeImageBackgroundRef.current.style.background = `linear-gradient(to bottom, rgba(255, 255, 255, 0.95) ${height}px, transparent)`
-        } else {
-          homeImageBackgroundRef.current.style.background = `linear-gradient(to right, rgba(255, 255, 255, 0.95) 50%, transparent)`
-        }
+      if (window.innerWidth < MIN_DESKTOP_WIDTH) {
+        const entry = entries[0]
+        const height = entry.borderBoxSize[0].blockSize
+        document.documentElement.style.setProperty('--home-height', `${height}px`)
       }
     })
     if (homeRef.current) {
       observer.observe(homeRef.current)
     }
-    return () => observer.disconnect()
+    return () => {
+      observer.disconnect()
+      document.documentElement.style.removeProperty('--home-height')
+    }
   }, [])
 
   return (
     <>
-      <img src={img} alt="home-image" className="home-image" />
-      <div className="home-image-background" ref={homeImageBackgroundRef}></div>
       <div className="home container" ref={homeRef}>
         <h1>
           <span className="home-your-peace">Your Peace,</span>{' '}
