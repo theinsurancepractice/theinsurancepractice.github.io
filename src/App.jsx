@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Routes, Route, NavLink, useLocation } from 'react-router'
+import { FACEBOOK_URL, INSTAGRAM_URL, MIN_DESKTOP_WIDTH } from './constants'
 import chatBubble from './assets/chat-bubble.png'
 import logoWhiteBg from './assets/logo-white-bg.png'
 import logoBlueBg from './assets/logo-blue-bg.png'
@@ -58,10 +59,6 @@ import MarineCargo from './products/MarineCargo.jsx'
 import FreightForwarder from './products/FreightForwarder.jsx'
 import InlandTransit from './products/InlandTransit.jsx'
 import WarehousemanLiability from './products/WarehousemanLiability.jsx'
-
-const FACEBOOK_URL = "https://www.facebook.com/"
-const INSTAGRAM_URL = "https://www.instagram.com/"
-const MIN_DESKTOP_WIDTH = 1024
 
 const App = () => {
   const location = useLocation()

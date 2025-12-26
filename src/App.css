@@ -20,6 +20,12 @@ main {
   flex-grow: 1;
 }
 
+main:has(> .home) {
+  position: relative;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
 main:has(> .contact) {
   padding-bottom: 1.5rem;
 }
@@ -51,7 +57,7 @@ h3 {
   font-size: 1.2rem;
 }
 
-h3, h4, p, ul {
+h1, h3, h4, p, ul {
   margin-block-start: 0;
   margin-block-end: 0;
 }
@@ -81,6 +87,7 @@ blockquote {
   display: flex;
   justify-content: space-between;
   background-color: white;
+  z-index: 1;
 }
 
 .navbar.hidden {
@@ -449,6 +456,78 @@ blockquote {
   width: 2rem;
   height: 2rem;
   fill: white;
+}
+
+.home-image {
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+}
+
+.home-image-background {
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  height: 100%;
+  z-index: -1;
+}
+
+.home {
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+}
+
+.home,
+.home-enquire-container {
+  width: 100vw;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-gutter: stable;
+}
+
+.home-description {
+  font-size: 1.2rem;
+  margin-top: 1rem;
+}
+
+.home h1{
+  font-size: 3rem;
+}
+
+.home-your-peace,
+.home-we-mind {
+  display: inline-block;
+}
+
+.home-we-mind {
+  color: var(--theme-color);
+  animation: fadeIn 1s ease-out both;
+}
+
+.home-enquire-container {
+  display: flex;
+  justify-content: center;
+  padding-top: 1rem;
+  padding-bottom: 6rem;
+}
+
+.home-enquire {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  width: 12rem;
+  height: 3.5rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-decoration: none;
+  background-color: var(--theme-color);
+  color: white;
+  border-radius: 9999px;
+  padding: 0 1.6rem;
 }
 
 .about-sections,
@@ -945,6 +1024,17 @@ blockquote {
   100% { transform: rotate(360deg); }
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-1rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @container (min-width: 54rem) {
   .insurance-types {
     justify-content: start;
@@ -1003,6 +1093,9 @@ blockquote {
   .offcanvas-sublinks {
     padding-left: 0.5rem;
   }
+  .home h1 {
+    font-size: 2.25rem;
+  }
   .not-found-link {
     padding: 0.25rem 0;
   }
@@ -1055,6 +1148,12 @@ blockquote {
   }
   .offcanvas-button {
     display: none;
+  }
+  .home {
+    padding-right: 32rem;
+  }
+  .home-enquire-container {
+    justify-content: flex-start;
   }
   .product-group {
     flex-direction: row;
@@ -1138,6 +1237,9 @@ blockquote {
   .footer-logo {
     max-height: 6rem;
   }
+  .home {
+    padding-right: 40rem;
+  }
   .about,
   .member,
   .service,
@@ -1181,6 +1283,9 @@ blockquote {
   }
   .navbar-link {
     font-size: 1.1rem;
+  }
+  .home {
+    padding-right: 48rem;
   }
   .about,
   .member,
