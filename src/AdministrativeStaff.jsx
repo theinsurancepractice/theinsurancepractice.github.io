@@ -4,7 +4,7 @@ const AdministrativeStaff = () => (
   <div className="career container">
     <h2>Administrative Staff</h2>
     <div className="career-content">
-      <img src={AdministrativeStaffImage} alt="Administrative Staff" />
+      <img src={AdministrativeStaffImage} alt="Administrative Staff" onLoad={e => e.target.classList.add('visible')} />
       <div>
         <h3>Benefits</h3>
         <ul>

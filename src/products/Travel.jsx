@@ -4,7 +4,7 @@ const Travel = () => (
   <div className="product container">
     <h2>Travel</h2>
     <div className="product-group">
-      <img src={img} alt="Travel" />
+      <img src={img} alt="Travel" onLoad={e => e.target.classList.add('visible')} />
       <p>Protects travellers against unexpected events during a trip, such as medical emergencies, trip cancellations, lost or delayed baggage, and travel inconveniences.</p>
     </div>
   </div>

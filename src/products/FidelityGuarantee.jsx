@@ -4,7 +4,7 @@ const FidelityGuarantee = () => (
   <div className="product container">
     <h2>Fidelity Guarantee</h2>
     <div className="product-group">
-      <img src={img} alt="Fidelity Guarantee" />
+      <img src={img} alt="Fidelity Guarantee" onLoad={e => e.target.classList.add('visible')} />
       <p>Protects a business against financial loss caused by fraudulent or dishonest acts committed by its employees, such as theft of money, property, or valuables.</p>
     </div>
   </div>

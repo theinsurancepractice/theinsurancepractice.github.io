@@ -603,6 +603,11 @@ blockquote {
   aspect-ratio: 8 / 5;
   object-fit: cover;
   z-index: -1;
+  visibility: hidden;
+}
+
+.product-group img.visible {
+  visibility: visible;
 }
 
 .team-members {
@@ -712,6 +717,11 @@ blockquote {
   max-height: 20rem;
   aspect-ratio: 8 / 5;
   object-fit: cover;
+  visibility: hidden;
+}
+
+.career-content img.visible {
+  visibility: visible;
 }
 
 .career-content footer,

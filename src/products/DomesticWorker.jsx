@@ -4,7 +4,7 @@ const DomesticWorker = () => (
   <div className="product container">
     <h2>Domestic Worker</h2>
     <div className="product-group">
-      <img src={img} alt="Domestic Worker" />
+      <img src={img} alt="Domestic Worker" onLoad={e => e.target.classList.add('visible')} />
       <p>Provides essential protection for employers and their domestic helpers, covering medical expenses, personal accident benefits, hospitalisation, and employer's liability. It ensures compliance with regulatory requirements while safeguarding both the helper's well-being and the employer's financial responsibilities.</p>
     </div>
   </div>

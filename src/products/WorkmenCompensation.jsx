@@ -4,7 +4,7 @@ const WorkmenCompensation = () => (
   <div className="product container">
     <h2>Workmen Compensation</h2>
     <div className="product-group">
-      <img src={img} alt="Workmen Compensation" />
+      <img src={img} alt="Workmen Compensation" onLoad={e => e.target.classList.add('visible')} />
       <p>Covers employees who suffer work-related injuries or occupational diseases. It typically pays for medical expenses, lost wages, rehabilitation, and compensation required under workplace injury laws.</p>
     </div>
   </div>

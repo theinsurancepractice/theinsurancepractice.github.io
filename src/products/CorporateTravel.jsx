@@ -4,7 +4,7 @@ const CorporateTravel = () => (
   <div className="product container">
     <h2>Corporate Travel</h2>
     <div className="product-group">
-      <img src={img} alt="Corporate Travel" />
+      <img src={img} alt="Corporate Travel" onLoad={e => e.target.classList.add('visible')} />
       <p>Protects employees travelling for business against unexpected incidents, such as medical emergencies, trip cancellations, lost baggage, travel delays, and accident-related injuries.</p>
     </div>
   </div>
