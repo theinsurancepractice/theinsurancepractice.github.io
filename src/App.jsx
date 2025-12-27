@@ -24,7 +24,6 @@ import Partners from './Partners.jsx'
 import PersonalInsurance from './PersonalInsurance.jsx'
 import Team from './Team.jsx'
 import Workshop from './Workshop.jsx'
-import TanTzeTingAleathea from './team/TanTzeTingAleathea.jsx'
 import './App.css'
 
 import Travel from './products/Travel.jsx'
@@ -60,6 +59,12 @@ import MarineCargo from './products/MarineCargo.jsx'
 import FreightForwarder from './products/FreightForwarder.jsx'
 import InlandTransit from './products/InlandTransit.jsx'
 import WarehousemanLiability from './products/WarehousemanLiability.jsx'
+
+import TanTzeTingAleathea from './team/TanTzeTingAleathea.jsx'
+import BensonTan from './team/BensonTan.jsx'
+import SamuelChew from './team/SamuelChew.jsx'
+import ShaneTanLongKiat from './team/ShaneTanLongKiat.jsx'
+import BrandonTan from './team/BrandonTan.jsx'
 
 const App = () => {
   const location = useLocation()
@@ -104,7 +109,13 @@ const App = () => {
   ].includes(location.pathname)
   const productsActive = personalInsuranceActive || corporateInsuranceActive
   const servicesActive = ['/services/existing-businesses', '/services/new-businesses'].includes(location.pathname)
-  const teamActive = ['/our-team/tan-tze-ting-aleathea'].includes(location.pathname)
+  const teamActive = [
+    '/our-team/tan-tze-ting-aleathea',
+    '/our-team/benson-tan',
+    '/our-team/samuel-chew',
+    '/our-team/shane-tan-long-kiat',
+    '/our-team/brandon-tan'
+  ].includes(location.pathname)
   const careersActive = ['/careers/broking-staff', '/careers/administrative-staff'].includes(location.pathname)
   const [navbarProductsTriangleAngle, setNavbarProductsTriangleAngle] = useState(0)
   const [navbarServicesTriangleAngle, setNavbarServicesTriangleAngle] = useState(0)
@@ -520,6 +531,10 @@ const App = () => {
           <Route path="products/corporate-insurance/warehouseman-liability" element={<WarehousemanLiability />} />
           <Route path="our-team" element={<Team />} />
           <Route path="our-team/tan-tze-ting-aleathea" element={<TanTzeTingAleathea />} />
+          <Route path="our-team/benson-tan" element={<BensonTan />} />
+          <Route path="our-team/samuel-chew" element={<SamuelChew />} />
+          <Route path="our-team/shane-tan-long-kiat" element={<ShaneTanLongKiat />} />
+          <Route path="our-team/brandon-tan" element={<BrandonTan />} />
           <Route path="services/existing-businesses" element={<ExistingBusinesses />} />
           <Route path="services/new-businesses" element={<NewBusinesses />} />
           <Route path="our-partners" element={<Partners />} />
