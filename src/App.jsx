@@ -22,6 +22,7 @@ import NewBusinesses from './NewBusinesses.jsx'
 import NotFound from './NotFound.jsx'
 import Partners from './Partners.jsx'
 import PersonalInsurance from './PersonalInsurance.jsx'
+import ScrollToTop from './ScrollToTop.jsx'
 import Team from './Team.jsx'
 import Workshop from './Workshop.jsx'
 import './App.css'
@@ -489,8 +490,9 @@ const App = () => {
           <div className="offcanvas-right-bottom"></div>
         </div>
       </nav>
-    
+
       <main>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="about-us" element={<About />} />
