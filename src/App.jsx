@@ -297,7 +297,7 @@ const App = () => {
             <HamburgerSvg />
           </div>
           <NavLink to="/" end className="navbar-link navbar-link-logo">
-            <img src={logoWhiteBg} alt="The Insurance Practice Logo" className="navbar-logo" width="1408" height="752" />
+            <img src={logoWhiteBg} alt="The Insurance Practice Logo" className="navbar-logo" width="264" height="141" />
           </NavLink>
           <NavLink to="/" end className="navbar-link">
             Home

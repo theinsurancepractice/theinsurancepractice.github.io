@@ -1,4 +1,4 @@
-import img from '../assets/stock-product-liability.png'
+import img from '../assets/stock-product-liability.jpg'
 
 const ProductLiability = () => (
   <div className="product container">

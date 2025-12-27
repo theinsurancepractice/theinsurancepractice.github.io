@@ -1,4 +1,4 @@
-import img from '../assets/stock-rental-bond.png'
+import img from '../assets/stock-rental-bond.jpg'
 
 const RentalBond = () => (
   <div className="product container">

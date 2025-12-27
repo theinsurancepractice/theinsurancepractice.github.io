@@ -1,4 +1,4 @@
-import img from '../assets/stock-golfer.png'
+import img from '../assets/stock-golfer.jpg'
 
 const Golfer = () => (
   <div className="product container">
