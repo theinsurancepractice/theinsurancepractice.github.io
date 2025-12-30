@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import brandonTan from '@/assets/brandon-tan.jpg'
 
 const BrandonTan = () => (
