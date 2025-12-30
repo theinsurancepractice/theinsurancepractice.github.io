@@ -1,0 +1,23 @@
+{
+  "name": "The Insurance Practice",
+  "short_name": "TIP",
+  "description": "From consultation to claims, we are your complete, one-stop insurance solution under a single trusted roof.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#238dc1",
+  "icons": [
+    {
+      "src": "/web-app-manifest-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/web-app-manifest-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
