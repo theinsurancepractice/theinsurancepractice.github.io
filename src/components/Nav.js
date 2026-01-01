@@ -408,13 +408,13 @@ const Nav = () => {
             </Link>
           </div>
           <div className="offcanvas-socials">
-            <a href={FACEBOOK_URL} target="_blank" rel="noopener noreferrer" tabIndex={offcanvasTabIndex} className="offcanvas-icon">
+            <a href={FACEBOOK_URL} aria-label="Facebook" target="_blank" rel="noopener noreferrer" tabIndex={offcanvasTabIndex} className="offcanvas-icon">
               <FacebookSvg />
             </a>
-            <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" tabIndex={offcanvasTabIndex} className="offcanvas-icon">
+            <a href={INSTAGRAM_URL} aria-label="Instagram" target="_blank" rel="noopener noreferrer" tabIndex={offcanvasTabIndex} className="offcanvas-icon">
               <InstagramSvg />
             </a>
-            <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" tabIndex={offcanvasTabIndex} className="offcanvas-icon">
+            <a href={LINKEDIN_URL} aria-label="LinkedIn" target="_blank" rel="noopener noreferrer" tabIndex={offcanvasTabIndex} className="offcanvas-icon">
               <LinkedInSvg />
             </a>
           </div>

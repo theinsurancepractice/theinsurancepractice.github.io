@@ -13,13 +13,13 @@ const Footer = () => (
         <Image src={logoBlueBg} alt="The Insurance Practice Logo" loading="eager" className="footer-logo" />
       </Link>
       <div className="footer-socials">
-        <a href={FACEBOOK_URL} target="_blank" rel="noopener noreferrer" className="footer-icon">
+        <a href={FACEBOOK_URL} aria-label="Facebook" target="_blank" rel="noopener noreferrer" className="footer-icon">
           <FacebookSvg />
         </a>
-        <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="footer-icon">
+        <a href={INSTAGRAM_URL} aria-label="Instagram" target="_blank" rel="noopener noreferrer" className="footer-icon">
           <InstagramSvg />
         </a>
-        <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" className="footer-icon">
+        <a href={LINKEDIN_URL} aria-label="LinkedIn" target="_blank" rel="noopener noreferrer" className="footer-icon">
           <LinkedInSvg />
         </a>
       </div>
