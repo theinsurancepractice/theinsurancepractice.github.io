@@ -1,11 +1,11 @@
 import Image from 'next/image'
-import BrokingStaffImage from '@/assets/broking-staff.jpg'
+import BrokingStaffImage from '@/assets/broking-staff.webp'
 
 const BrokingStaff = () => (
   <div className="career container">
     <h2>Broking Staff</h2>
     <div className="career-content">
-      <Image src={BrokingStaffImage} alt="Broking Staff" />
+      <Image src={BrokingStaffImage} alt="Broking Staff" loading="eager" />
       <div>
         <h3>Benefits</h3>
         <ul>

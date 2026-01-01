@@ -1,11 +1,11 @@
 import Image from 'next/image'
-import img from '@/assets/stock-medical-plans.jpg'
+import img from '@/assets/stock-medical-plans.webp'
 
 const MedicalPlans = () => (
   <div className="product container">
     <h2>Medical Plans</h2>
     <div className="product-group">
-      <Image src={img} alt="Medical Plans" />
+      <Image src={img} alt="Medical Plans" loading="eager" />
       <p>Provide comprehensive health protection for individuals who live, work, or travel abroad. These plans typically include inpatient and outpatient care, emergency medical treatment, evacuation and repatriation, and access to a global network of medical providers.</p>
     </div>
   </div>

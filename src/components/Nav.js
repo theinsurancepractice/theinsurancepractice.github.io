@@ -4,8 +4,8 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
-import logoBlueBg from '@/assets/logo-blue-bg.png'
-import logoWhiteBg from '@/assets/logo-white-bg.png'
+import logoBlueBg from '@/assets/logo-blue-bg.webp'
+import logoWhiteBg from '@/assets/logo-white-bg.webp'
 import ChatBubbleSvg from '@/svg/ChatBubbleSvg'
 import HamburgerSvg from '@/svg/HamburgerSvg'
 import FacebookSvg from '@/svg/FacebookSvg'
@@ -238,7 +238,7 @@ const Nav = () => {
             <HamburgerSvg />
           </div>
           <Link href="/" className="navbar-link navbar-link-logo">
-            <Image src={logoWhiteBg} alt="The Insurance Practice Logo" className="navbar-logo" width="264" height="141" />
+            <Image src={logoWhiteBg} alt="The Insurance Practice Logo" className="navbar-logo" width="264" height="141" loading="eager" />
           </Link>
           <Link href="/" className={`navbar-link ${pathname === '/' ? 'active' : ''}`}>
             Home
