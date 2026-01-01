@@ -64,7 +64,14 @@ const Nav = () => {
     '/our-team/benson-tan',
     '/our-team/samuel-chew',
     '/our-team/shane-tan-long-kiat',
-    '/our-team/brandon-tan'
+    '/our-team/brandon-tan',
+    '/our-team/oh-yong-sheng-xavier',
+    '/our-team/soh-yong-tat',
+    '/our-team/chermaine-sim-hui-ping',
+    '/our-team/edwin-hoo-chong-chin',
+    '/our-team/james-ng-chean-ming',
+    '/our-team/linda-chua-pei-mei',
+    '/our-team/rene-dang-siao-ling'
   ].includes(pathname)
   const careersActive = ['/careers/broking-staff', '/careers/administrative-staff'].includes(pathname)
   const [navbarProductsTriangleAngle, setNavbarProductsTriangleAngle] = useState(0)
