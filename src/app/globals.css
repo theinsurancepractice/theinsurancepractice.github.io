@@ -45,10 +45,7 @@ main {
 main:has(> .home) {
   padding-top: 0;
   padding-bottom: 0;
-  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.95) var(--home-height), transparent), url('../assets/administrative-staff.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  position: relative;
 }
 
 main:has(> .contact) {
@@ -485,6 +482,22 @@ blockquote {
   width: 100%;
   height: 100%;
   fill: white;
+}
+
+.home-image {
+  position: absolute;
+  width: 100vw;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+}
+
+.home-image-background {
+  position: absolute;
+  width: 100vw;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, var(--home-opacity, 1)) var(--home-height, 100%), transparent);
+  z-index: -1;
 }
 
 .home {
@@ -1124,8 +1137,8 @@ blockquote {
   :root {
     --navbar-height: 5rem;
   }
-  main:has(> .home) {
-    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.95) 50%, transparent), url('../assets/administrative-staff.jpg');
+  .home-image-background {
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.95) 50%, transparent);
   }
   .container {
     width: 64rem;

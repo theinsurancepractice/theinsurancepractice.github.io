@@ -1,11 +1,11 @@
 import Image from 'next/image'
-import AdministrativeStaffImage from '@/assets/administrative-staff.jpg'
+import AdministrativeStaffImage from '@/assets/administrative-staff.webp'
 
 const AdministrativeStaff = () => (
   <div className="career container">
     <h2>Administrative Staff</h2>
     <div className="career-content">
-      <Image src={AdministrativeStaffImage} alt="Administrative Staff" />
+      <Image src={AdministrativeStaffImage} alt="Administrative Staff" loading="eager" />
       <div>
         <h3>Benefits</h3>
         <ul>

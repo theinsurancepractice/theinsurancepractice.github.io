@@ -12,6 +12,7 @@ const HomeHeight = ({ children }) => {
         const entry = entries[0]
         const height = entry.borderBoxSize[0].blockSize
         document.documentElement.style.setProperty('--home-height', `${height}px`)
+        document.documentElement.style.setProperty('--home-opacity', `0.95`)
       }
     })
     if (homeRef.current) {
@@ -20,6 +21,7 @@ const HomeHeight = ({ children }) => {
     return () => {
       observer.disconnect()
       document.documentElement.style.removeProperty('--home-height')
+      document.documentElement.style.removeProperty('--home-opacity')
     }
   }, [])
 

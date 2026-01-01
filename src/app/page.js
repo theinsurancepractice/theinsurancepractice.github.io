@@ -1,9 +1,13 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import HomeHeight from '@/components/HomeHeight'
 import TriangleSvg from '@/svg/TriangleSvg'
+import img from '@/assets/administrative-staff.webp'
 
 const Home = () => (
   <>
+    <Image src={img} alt="Home Image" loading="eager" className="home-image" />
+    <div className="home-image-background"></div>
     <HomeHeight>
       <h1>
         <span className="home-your-peace">Your Peace,</span>{' '}
