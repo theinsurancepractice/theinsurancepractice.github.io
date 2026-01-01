@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import lindaChuaPeiMei from '@/assets/linda-chua-pei-mei.jpg'
+import lindaChuaPeiMei from '@/assets/linda-chua-pei-mei.webp'
 
 const LindaChuaPeiMei = () => (
   <div className="member container">

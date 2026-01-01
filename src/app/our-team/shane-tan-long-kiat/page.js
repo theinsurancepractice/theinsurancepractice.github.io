@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import shaneTanLongKiat from '@/assets/shane-tan-long-kiat.jpg'
+import shaneTanLongKiat from '@/assets/shane-tan-long-kiat.webp'
 
 const ShaneTanLongKiat = () => (
   <div className="member container">

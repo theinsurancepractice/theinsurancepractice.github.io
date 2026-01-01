@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import chermaineSimHuiPing from '@/assets/chermaine-sim-hui-ping.jpg'
+import chermaineSimHuiPing from '@/assets/chermaine-sim-hui-ping.webp'
 
 const ChermaineSimHuiPing = () => (
   <div className="member container">
