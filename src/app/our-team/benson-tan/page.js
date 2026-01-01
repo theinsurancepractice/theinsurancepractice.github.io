@@ -4,7 +4,7 @@ import bensonTan from '@/assets/benson-tan.jpg'
 const BensonTan = () => (
   <div className="member container">
     <div className="member-left">
-      <Image src={bensonTan} alt="Benson Tan" className="team-member-photo member-photo" />
+      <Image src={bensonTan} alt="Benson Tan" loading="eager" className="team-member-photo member-photo" />
       <div className="team-member-divider member-divider-top"></div>
       <h2 className="member-name">Benson Tan</h2>
       <p className="member-role">General Insurance Agent</p>

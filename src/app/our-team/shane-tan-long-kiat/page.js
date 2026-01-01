@@ -4,7 +4,7 @@ import shaneTanLongKiat from '@/assets/shane-tan-long-kiat.jpg'
 const ShaneTanLongKiat = () => (
   <div className="member container">
     <div className="member-left">
-      <Image src={shaneTanLongKiat} alt="Shane Tan Long Kiat" className="team-member-photo member-photo" />
+      <Image src={shaneTanLongKiat} alt="Shane Tan Long Kiat" loading="eager" className="team-member-photo member-photo" />
       <div className="team-member-divider member-divider-top"></div>
       <h2 className="member-name">Shane Tan Long Kiat</h2>
       <p className="member-role">General Insurance Agent</p>

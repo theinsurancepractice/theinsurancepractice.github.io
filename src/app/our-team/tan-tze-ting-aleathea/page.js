@@ -4,7 +4,7 @@ import tanTzeTingAleathea from '@/assets/tan-tze-ting-aleathea.jpg'
 const TanTzeTingAleathea = () => (
   <div className="member container">
     <div className="member-left">
-      <Image src={tanTzeTingAleathea} alt="Tan Tze Ting Aleathea" className="team-member-photo member-photo" />
+      <Image src={tanTzeTingAleathea} alt="Tan Tze Ting Aleathea" loading="eager" className="team-member-photo member-photo" />
       <div className="team-member-divider member-divider-top"></div>
       <h2 className="member-name">Tan Tze Ting Aleathea</h2>
       <p className="member-role">Assistant Manager</p>

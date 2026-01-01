@@ -1,12 +1,12 @@
 import Image from 'next/image'
-import brandonTan from '@/assets/brandon-tan.jpg'
+import lindaChuaPeiMei from '@/assets/linda-chua-pei-mei.jpg'
 
-const BrandonTan = () => (
+const LindaChuaPeiMei = () => (
   <div className="member container">
     <div className="member-left">
-      <Image src={brandonTan} alt="Brandon Tan" loading="eager" className="team-member-photo member-photo" />
+      <Image src={lindaChuaPeiMei} alt="Linda Chua Pei Mei" loading="eager" className="team-member-photo member-photo" />
       <div className="team-member-divider member-divider-top"></div>
-      <h2 className="member-name">Brandon Tan</h2>
+      <h2 className="member-name">Linda Chua Pei Mei</h2>
       <p className="member-role">General Insurance Agent</p>
       <div className="team-member-divider member-divider-bottom"></div>
     </div>
@@ -18,4 +18,4 @@ const BrandonTan = () => (
   </div>
 )
 
-export default BrandonTan
+export default LindaChuaPeiMei
